@@ -68,7 +68,7 @@ nav.mainnav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px;background:#ffffff;}
 .view{display:none;padding:44px 20px 20px;max-width:1180px;margin:0 auto;}
 .view.active{display:block;}
-.fullbleed{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);}
+.fullbleed{width:calc(var(--vw,1vw) * 100);margin-left:calc(50% - var(--vw,1vw) * 50);margin-right:calc(50% - var(--vw,1vw) * 50);}
 .fullbleed img{display:block;width:100%;height:min(74vh,660px);object-fit:cover;}
 .fullbleed .figcap{max-width:1180px;margin-left:auto;margin-right:auto;padding-left:20px;padding-right:20px;}
 .plate{border-top:2px solid var(--ink);padding-top:14px;margin-top:26px;max-width:30rem;}
@@ -661,6 +661,7 @@ footer.site{border-top:2px solid var(--ink);margin-top:50px;background:#ffffff;}
             <span class="tag">Earth Up Close &middot; Tampa International Airport</span>
             <span class="tag">Symphonies in Scale: LICHENS &middot; Fernbank Museum</span>
             <span class="tag">Kansas Wesleyan University</span>
+            <span class="tag">Symphonies in Scale: LICHENS &middot; Kansas Wesleyan University</span>
             <span class="tag">Exposure &middot; Global Village Museum</span>
             <span class="tag">The Recognition Wall</span>
             <span class="tag">The Scenarios &middot; Held Places</span>
@@ -1686,22 +1687,23 @@ footer.site{border-top:2px solid var(--ink);margin-top:50px;background:#ffffff;}
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
-      <p>A resume lists. This wing walks. The solo exhibitions, the speaking and workshop record, the expeditions and assignments, and the recognition on Matthew&rsquo;s record each take a room, hung from his own documented record and nothing else: Earth Up Close at Tampa International Airport, Symphonies in Scale: LICHENS at Fernbank Museum, Kansas Wesleyan University, Exposure at Global Village Museum, and the Recognition Wall.</p>
+      <p>A resume lists. This wing walks. The solo exhibitions, the speaking and workshop record, the expeditions and assignments, and the recognition on Matthew&rsquo;s record each take a room, hung from his own documented record and nothing else: Earth Up Close at Tampa International Airport, Symphonies in Scale: LICHENS at Fernbank Museum, Kansas Wesleyan University (a workshop room and an exhibition room, Symphonies in Scale: LICHENS), Exposure at Global Village Museum, and the Recognition Wall.</p>
       <p>Inside this wing also stand the scenarios where Matthew was bullied, emotionally abused, and otherwise. Those rooms are held places, not filled rooms: Matthew has not supplied the scenarios yet, none are on record, and none will be invented for this wing. When he supplies them, each becomes its own room, told with the other people depersonalized and anonymized, no names, no identifying details.</p>
       <p>No concept visual stands in for this wing, and no substitute imagery hangs in it. Its rooms hold Matthew&rsquo;s real photographs, credited, or a reserved frame until the photographs are installed.</p>
     </div>
     <div class="rooms">
-      <div class="room calm"><p class="rnum">Room 1 &middot; Exhibit room</p><h3>Earth Up Close — Tampa International Airport</h3><p>Matthew&rsquo;s solo exhibition Earth Up Close, Tampa International Airport, 2019. From his documented record, hung proof-first.</p></div>
-      <div class="room calm"><p class="rnum">Room 2 &middot; Exhibit room</p><h3>Symphonies in Scale: LICHENS — Fernbank Museum</h3><p>His solo exhibition Symphonies in Scale: LICHENS, Fernbank Museum of Natural History, Atlanta, 2022. Fernbank, one word, as Matthew spells it.</p></div>
+      <div class="room calm"><p class="rnum">Room 1 &middot; Exhibit room</p><h3>Earth Up Close at Tampa International Airport</h3><p>Matthew&rsquo;s solo exhibition Earth Up Close, Tampa International Airport, 2019. From his documented record, hung proof-first.</p></div>
+      <div class="room calm"><p class="rnum">Room 2 &middot; Exhibit room</p><h3>Symphonies in Scale: LICHENS at Fernbank Museum</h3><p>His solo exhibition Symphonies in Scale: LICHENS, Fernbank Museum of Natural History, Atlanta, 2022. Fernbank, one word, as Matthew spells it.</p></div>
       <div class="room calm"><p class="rnum">Room 3 &middot; Speaking and workshop room</p><h3>Kansas Wesleyan University</h3><p>Kansas Wesleyan University, 2023: DEI workshops on neurodiversity. Matthew places this on the record as a speaking and workshop room, not an exhibit.</p></div>
-      <div class="room calm"><p class="rnum">Room 4 &middot; Exhibit room</p><h3>Exposure — Global Village Museum</h3><p>Exposure, his exhibition at the Global Village Museum in Fort Collins, 2026, in the museum where he also holds a working relationship.</p></div>
-      <div class="room calm"><p class="rnum">Room 5 &middot; Record room</p><h3>The Recognition Wall</h3><p>The recognition on his documented record: Forbes 30 Under 30, Art &amp; Style (2021); PDN&rsquo;s 30 New and Emerging Photographers to Watch (2018); Associate Fellow, iLCP (2018); the Conservation Biology cover (2024); a Smithsonian Magazine assignment (2020); and the Duke Nature Centennial Program, Duke &times; National Geographic (2024).</p></div>
-      <div class="room"><p class="rnum">Room 6 &middot; Held for the record</p><h3>Speaking and Expeditions</h3><p>The speaking situations and expeditions from Matthew&rsquo;s documented record take their rooms here as he supplies them, each hung from his own record and nothing else.</p></div>
-      <div class="room"><p class="rnum">Room 7 &middot; Held places</p><h3>The Scenarios — Held Places</h3><p>Held places for the scenarios where Matthew was bullied, emotionally abused, and otherwise. Empty on purpose, until he supplies them. See the held frame below.</p></div>
+      <div class="room calm"><p class="rnum">Room 4 &middot; Exhibit room</p><h3>Symphonies in Scale: LICHENS at Kansas Wesleyan University</h3><p>His solo exhibition Symphonies in Scale: LICHENS, Kansas Wesleyan University, 2023. From his documented record, hung proof-first. The 2023 workshop at the university has its own room, Room 3.</p></div>
+      <div class="room calm"><p class="rnum">Room 5 &middot; Exhibit room</p><h3>Exposure at Global Village Museum</h3><p>Exposure, his exhibition at the Global Village Museum in Fort Collins, 2026, in the museum where he also holds a working relationship.</p></div>
+      <div class="room calm"><p class="rnum">Room 6 &middot; Record room</p><h3>The Recognition Wall</h3><p>The recognition on his documented record: Forbes 30 Under 30, Art &amp; Style (2021); PDN&rsquo;s 30 New and Emerging Photographers to Watch (2018); Associate Fellow, iLCP (2018); the Conservation Biology cover (2024); a Smithsonian Magazine assignment (2020); and the Duke Nature Centennial Program, Duke &times; National Geographic (2024).</p></div>
+      <div class="room"><p class="rnum">Room 7 &middot; Held for the record</p><h3>Speaking and Expeditions</h3><p>The speaking situations and expeditions from Matthew&rsquo;s documented record take their rooms here as he supplies them, each hung from his own record and nothing else.</p></div>
+      <div class="room"><p class="rnum">Room 8 &middot; Held places</p><h3>The Scenarios: Held Places</h3><p>Held places for the scenarios where Matthew was bullied, emotionally abused, and otherwise. Empty on purpose, until he supplies them. See the held frame below.</p></div>
     </div>
     <div class="reserve-frame">
       <p class="rf-label">Held places &middot; Nothing invented</p>
-      <h3>The Scenarios — Held Places</h3>
+      <h3>The Scenarios: Held Places</h3>
       <p>These rooms stand empty on purpose. Matthew has not supplied the scenarios yet, and none are on record, so nothing here is invented, dramatized, or filled in. When Matthew supplies a scenario, it becomes its own room, with the other people in it depersonalized and anonymized: no names, no identifying details.</p>
       <div class="rf-space">Space held for scenarios Matthew supplies himself, in his own words, on his own timing.</div>
     </div>
@@ -1865,9 +1867,19 @@ img{max-width:100%;}
 @media (max-width:760px){.pairgrid{grid-template-columns:1fr;}}
 </style>
 <script>
+/* Scrollbar-aware viewport unit: full-bleed sections use --vw (1% of the width the page can actually fill), so a visible scrollbar never adds sideways scroll. CSS falls back to 1vw if this does not run. */
+(function(){
+  var de = document.documentElement;
+  function setVw(){ de.style.setProperty("--vw", (de.clientWidth / 100) + "px"); }
+  setVw();
+  window.addEventListener("resize", setVw);
+  if(window.ResizeObserver){ try{ new ResizeObserver(setVw).observe(de); }catch(e){} }
+})();
+</script>
+<script>
 (function(){
   "use strict";
-  var VIEWS = ["overview","wings","wing-art","wing-disability","wing-neuro","wing-chronic","wing-corporate","wing-innovation","wing-conservation","wing-voting","wing-life","buildnotes","about","councils","roadmap","subroom","collection"];
+  var VIEWS =["overview","wings","wing-art","wing-disability","wing-neuro","wing-chronic","wing-corporate","wing-innovation","wing-conservation","wing-voting","wing-life","buildnotes","about","councils","roadmap","subroom","collection"];
   var PILL_FOR = {"wing-art":"wings","wing-disability":"wings","wing-neuro":"wings","wing-chronic":"wings","wing-corporate":"wings","wing-innovation":"wings","wing-conservation":"wings","wing-voting":"wings","wing-life":"wings","subroom":"wings","collection":"wings"};
   var current = "overview";
 
@@ -3449,7 +3461,7 @@ img{max-width:100%;}
     {name:"Matthew&rsquo;s Life Wing (general)", path:"Litmus Labs / Matthew&rsquo;s Life", purpose:"The resume wing: Matthew&rsquo;s documented record walked as rooms, proof first, credentials as information second. Its rooms hold his real photographs, credited, or reserved frames; no substitute imagery stands in for documented work.",
      prompt:"Build the Matthew&rsquo;s Life wing as a white cube gallery suite that walks one documented life as rooms: an airport exhibition hall carrying Earth Up Close at mural scale; a natural history gallery for Symphonies in Scale: LICHENS with lichen macro photographs floor to ceiling; a university workshop room set for teaching, chairs in a circle; a community museum gallery carrying Exposure; and a quiet recognition wall with honors set as wall text, not trophies. Materials: gallery white, pale oak, brushed steel, wall text at reading height throughout. Sound: gallery quiet, room tone only. Movement: none; the record does not need effects. Portals: back to the hub, and thematically to the Art wing, where the same photography lives at species scale. TLCCW: Think about a career as evidence; Learn the record in the order it happened; Communicate it proof first; Create nothing here, this wing is for witnessing; Work means the standard the record sets for the rest of the building. Safety: calm throughout, seating in every room, step free route. The visitor should notice the work before the honors, feel the weight of a documented life, and learn that proof outranks claims.",
      alt:"No concept visual: this wing holds Matthew&rsquo;s documented record, so its frames are reserved for his own photographs, credited, and no substitute imagery is used."},
-    {name:"The Scenarios — Held Places", path:"Litmus Labs / Matthew&rsquo;s Life / The Scenarios", purpose:"Held places for the scenarios where Matthew was bullied, emotionally abused, and otherwise. He has not supplied these scenarios yet and none are on record, so the rooms stand empty on purpose: nothing invented, nothing dramatized. When he supplies one, it becomes its own room with the other people depersonalized and anonymized, no names, no identifying details.",
+    {name:"The Scenarios: Held Places", path:"Litmus Labs / Matthew&rsquo;s Life / The Scenarios", purpose:"Held places for the scenarios where Matthew was bullied, emotionally abused, and otherwise. He has not supplied these scenarios yet and none are on record, so the rooms stand empty on purpose: nothing invented, nothing dramatized. When he supplies one, it becomes its own room with the other people depersonalized and anonymized, no names, no identifying details.",
      prompt:"Build a row of empty white cube rooms at the end of the Matthew&rsquo;s Life wing, deliberately unfilled: white walls, one reserved frame per room, one line of wall text at reading height stating that this room is held for a scenario its subject has not supplied yet and that nothing here will be invented. No figures, no dramatization, no sound beyond room tone. When a scenario is supplied by Matthew, the room is built from his words alone, with every other person depersonalized and anonymized. TLCCW: Think about what a record owes the truth; Learn that an honest gap outranks a filled one; Communicate nothing on his behalf; Create nothing until he does; Work means holding the place, exactly as directed. Safety: these rooms carry no intensity and no content until Matthew supplies it himself.",
      alt:"No image: the held scenario rooms are empty by design, and no visual stands in for experiences that have not been supplied."}
   ]});
