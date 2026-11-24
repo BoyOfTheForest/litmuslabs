@@ -2,3 +2,8 @@ staging-base-backup/
 litmus-labs-gallery-site.zip
 PROJECT-NOTES.md
 PHASE-T-FIRST-PASS.md
+.claude/
+_t.html
+_w.html
+litmus-labs-images*.zip
+claude-prompt-beefy-run-*.md
