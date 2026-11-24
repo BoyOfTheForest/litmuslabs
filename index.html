@@ -248,6 +248,7 @@ button.btn{appearance:none;}
 .seat h3{font-size:1.05rem;margin-bottom:4px;}
 .seat .role{font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
 .seat p{font-size:.9rem;color:var(--muted);margin:0;}
+.room .vimg{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px;margin:0 0 12px;background:#eef2f7;}
 .seat .ph{display:block;width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center 20%;margin-bottom:12px;background:#eee;}
 .acc{border:1.5px solid var(--line);border-radius:var(--radius);margin-top:14px;background:#ffffff;overflow:hidden;}
 .acc > button{appearance:none;width:100%;text-align:left;border:none;background:#ffffff;font:inherit;cursor:pointer;padding:18px 20px;min-height:52px;display:flex;justify-content:space-between;gap:14px;align-items:center;font-weight:700;color:var(--ink);}
@@ -375,7 +376,7 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
 .sitemap a{padding:7px 2px;font-weight:500;color:var(--accent-deep);min-height:36px;}
 .sitemap .indent{padding-left:16px;}
 .sitemap .col-h{font-weight:700;}
-.totop{position:fixed;left:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:90;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(16,42,67,.18);opacity:.94;}
+.totop{position:fixed;left:12px;bottom:max(16px,env(safe-area-inset-bottom));z-index:90;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(16,42,67,.18);opacity:.94;}
 .totop[hidden]{display:none;}
 .totop:hover{background:var(--tint);color:var(--accent-deep);}
 @media (max-width:980px){.dd-cols{columns:2;}}
@@ -2373,6 +2374,8 @@ img{max-width:100%;}
       prompt:"Build The Vote, Start to Finish collection as six connected rooms inside a white cube gallery, in journey order: a bus stop with a ramped bus and a lit step free path to the door; a voting place facade in the middle of the room with three marked accessible parking spaces and hatched aisles in front of it and a white construction flatbed truck with a towed water trailer parked across all three, restaged with the truck gone and the spaces clear; a ballot drop box on a level pad at drive up height in a parking lot; a polling hall with check-in, privacy stations, and an accessible ballot-marking station on, tested, and central; a vertical notice kiosk with notices stacked to the floor beside the same notices in one horizontal band at seated eye level; and a capitol steps room with a press stakeout at the base of the steps and a second designated stakeout point at the arched accessible entrances underneath. Every scene in a bad example and a good example staging, sight and sound only, deep blue and amber accents."}
   };
   /* ---------- Room variations: atmospherics and alternate stagings ---------- */
+  /* Variation images present in assets/ (var-<roomid>-<n>.webp, n = 1-based position in that room's ROOM_VARS list). Cards without one stay text-only. */
+  var VAR_IMGS = "var-art-costs-1,var-art-costs-2,var-art-digital-1,var-art-digital-2,var-art-ghosts-1,var-art-ghosts-2,var-art-herbaria-1,var-art-herbaria-2,var-art-salamander-1,var-art-salamander-2,var-art-salamander-3,var-art-sanctuary-1,var-art-sanctuary-2,var-art-scale-1,var-art-scale-2,var-art-understory-1,var-art-understory-2,var-cc-ceiling-1,var-cc-ceiling-2,var-cc-notifications-1,var-cc-notifications-2,var-cc-openplan-1,var-cc-openplan-2,var-cc-quiet-1,var-ch-battery-1,var-ch-battery-2,var-ch-explaining-1,var-ch-explaining-2,var-ch-morning-1,var-ch-morning-2,var-ch-rest-1,var-co-beetle-1,var-co-beetle-2,var-co-beetle-3,var-co-fire-1,var-co-fire-2,var-co-fire-3,var-co-redtide-1,var-co-redtide-2,var-co-redtide-3,var-co-wildfire-1,var-co-wildfire-2,var-co-wildfire-3,var-dis-communication-1,var-dis-communication-2,var-dis-cost-1,var-dis-digital-1,var-dis-digital-2,var-dis-door-1,var-dis-door-2,var-dis-physical-1,var-dis-physical-2,var-dis-route-1,var-dis-route-2,var-dis-signage-1,var-dis-signage-2,var-dis-signage-3,var-dis-step-1,var-dis-step-2,var-dis-works-1,var-in-cyberdeck-1,var-in-cyberdeck-2,var-in-tactile-1,var-in-tactile-2,var-ov-color-1,var-ov-color-2,var-ov-conversation-1,var-ov-conversation-2,var-ov-cramped-1,var-ov-cramped-2,var-ov-crowd-1,var-ov-crowd-2,var-ov-guilt-1,var-ov-guilt-2,var-ov-home-1,var-ov-home-2,var-ov-light-1,var-ov-light-2,var-ov-light-3,var-ov-noise-1,var-ov-noise-2,var-ov-regulation-1,var-ov-tasks-1,var-ov-tasks-2,var-ov-time-1,var-ov-time-2,var-ov-workload-1,var-ov-workload-2,var-safety-alarm-1,var-safety-alarm-2,var-safety-plan-1,var-safety-refuge-1,var-safety-refuge-2,var-safety-stairs-1,var-safety-works-1".split(",");
   var ROOM_VARS = {
     "dis-signage":[{n:"Glare staging",d:"The problem sign under hard midday glare through corridor windows: the wash out gets worse, and the replacement sign does not change at all."},{n:"Two eye levels",d:"Both signs read in turn from a seated wheelchair height and a standing height: placement and contrast have to work from both, at the same corner."},{n:"Evening corridor",d:"The corner at dusk light levels: the low contrast sign disappears first, long before the corridor itself gets dark. The high contrast sign holds."}],
     "art-scale":[{n:"Dawn threshold",d:"The scale shift happens under soft morning light, the forest floor ahead just waking, dew at its heaviest on the fronds."},{n:"Rain threshold",d:"A gentle rain staging: the doorway drips, the floor beyond glistens, and smallness feels sheltered rather than exposed."}],
@@ -2913,6 +2916,14 @@ img{max-width:100%;}
         vd.innerHTML = "<p class='rnum'>Variation " + (vi+1) + "</p><h3></h3><p></p>";
         vd.querySelector("h3").textContent = vars[vi].n;
         vd.querySelector("p:last-child").innerHTML = vars[vi].d;
+        var vkey = "var-" + k + "-" + (vi+1);
+        if(VAR_IMGS.indexOf(vkey) !== -1){
+          var vim = document.createElement("img"); vim.className = "vimg"; vim.loading = "lazy"; vim.decoding = "async";
+          vim.src = "assets/" + vkey + ".webp"; vim.width = 1600; vim.height = 1067;
+          var vtmp = document.createElement("div"); vtmp.innerHTML = vars[vi].d;
+          vim.alt = vars[vi].n + ". " + (vtmp.textContent || "");
+          vd.insertBefore(vim, vd.firstChild);
+        }
         varsHost.appendChild(vd);
       }
       if(!vars.length){ varsHost.innerHTML = "<div class='room'><p class='rnum'>Variations</p><h3>Base staging</h3><p>This room is documented in its base staging in the Build Notes; atmospheric variations are added as the wing is prototyped.</p></div>"; }
@@ -3405,7 +3416,16 @@ img{max-width:100%;}
 
   /* back to top */
   var toTop = document.getElementById("toTop");
-  function syncTop(){ if(toTop) toTop.hidden = window.scrollY < 400; }
+  var lastY = window.scrollY, upMode = false, hideT = null;
+  function syncTop(){
+    if(!toTop) return;
+    var y = window.scrollY, phone = window.matchMedia("(max-width:760px)").matches;
+    if(y < 400){ toTop.hidden = true; lastY = y; return; }
+    if(!phone){ toTop.hidden = false; lastY = y; return; }
+    /* phone: stay out of the reading path. Show while scrolling up, hide while scrolling down. */
+    if(y < lastY - 4){ toTop.hidden = false; } else if(y > lastY + 4){ toTop.hidden = true; }
+    lastY = y;
+  }
   window.addEventListener("scroll", syncTop, {passive:true}); syncTop();
   if(toTop) toTop.addEventListener("click", function(){ scrollTop0(false); var m = document.getElementById("main"); if(m){ m.setAttribute("tabindex","-1"); m.focus({preventScroll:true}); } });
 })();
