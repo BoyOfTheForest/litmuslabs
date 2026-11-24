@@ -348,6 +348,45 @@ footer.site{border-top:2px solid var(--ink);margin-top:50px;background:#ffffff;}
   .portals{grid-template-columns:1fr;}
   .portal .door{height:110px;}
 }
+
+/* Part N: navigation */
+.topbar-in{position:relative;}
+a.brand{text-decoration:none;color:inherit;}
+a.brand:hover .brand-name{color:var(--accent-deep);}
+.pillgroup a{appearance:none;}
+.dd{position:relative;display:inline-flex;}
+.dd-btn::after{content:"";display:inline-block;width:6px;height:6px;margin-left:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);}
+.dd-btn[aria-expanded="true"]::after{transform:translateY(1px) rotate(225deg);}
+.dd-panel{position:absolute;top:calc(100% + 10px);left:0;z-index:120;background:#ffffff;border:1.5px solid var(--line);border-radius:var(--radius);box-shadow:0 14px 40px rgba(16,42,67,.16);padding:10px;max-height:calc(100vh - 110px);overflow:auto;overscroll-behavior:contain;}
+.dd-panel[hidden]{display:none;}
+.dd-zones{position:fixed;top:var(--topbar-h,72px);left:auto;right:max(20px,calc((100vw - 1180px) / 2 + 20px));width:min(360px,calc(100vw - 40px));margin-top:0;}
+.dd-rooms{position:fixed;top:var(--topbar-h,72px);left:50%;transform:translateX(-50%);width:min(1140px,calc(100vw - 40px));margin-top:0;padding:16px 18px;}
+.dd-cols{columns:3;column-gap:22px;}
+.dd-panel a,.sitemap a{display:block;color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:600;padding:9px 10px;min-height:40px;border-radius:8px;line-height:1.3;}
+.dd-panel a:hover,.sitemap a:hover{background:var(--tint);color:var(--accent-deep);text-decoration:underline;text-underline-offset:3px;}
+.dd-panel a[aria-current="page"]{background:var(--grad);color:#fff;}
+.dd-panel .grp{break-inside:avoid;margin-bottom:14px;}
+.dd-panel .grp-h{font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);padding:6px 10px 2px;}
+.dd-panel .col-h{font-weight:700;}
+.dd-panel .indent{padding-left:22px;font-weight:500;}
+.sitemap{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px 24px;}
+.sitemap h3{font-family:"Libre Franklin",sans-serif;font-size:.95rem;margin:0 0 6px;}
+.sitemap h3 a{display:inline-block;padding:4px 2px;min-height:0;color:var(--ink);font-size:.95rem;font-weight:800;}
+.sitemap a{padding:7px 2px;font-weight:500;color:var(--accent-deep);min-height:36px;}
+.sitemap .indent{padding-left:16px;}
+.sitemap .col-h{font-weight:700;}
+.totop{position:fixed;left:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:90;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(16,42,67,.18);opacity:.94;}
+.totop[hidden]{display:none;}
+.totop:hover{background:var(--tint);color:var(--accent-deep);}
+@media (max-width:980px){.dd-cols{columns:2;}}
+@media (max-width:760px){
+  nav.mainnav.open{position:fixed;inset:var(--topbar-h,72px) 0 0 0;z-index:110;background:#fff;overflow:auto;padding:14px 16px 40px;align-items:stretch;}
+  nav.mainnav.open .pillgroup{display:flex;flex-direction:column;flex-wrap:nowrap;width:100%;border:none;padding:0;gap:6px;}
+  nav.mainnav.open .pillgroup>button,nav.mainnav.open .dd-btn{width:100%;justify-content:space-between;text-align:left;border:1.5px solid var(--line);border-radius:12px;display:flex;align-items:center;}
+  nav.mainnav.open .dd{display:block;width:100%;}
+  .dd-cols{columns:1;}
+  .dd-panel,.dd-rooms,.dd-zones{position:static;top:auto;left:auto;right:auto;transform:none;width:100%;max-height:none;box-shadow:none;border:none;padding:4px 0 8px 6px;margin:0;}
+}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   .meter-fill{transition:none;}
@@ -360,19 +399,23 @@ footer.site{border-top:2px solid var(--ink);margin-top:50px;background:#ffffff;}
 <div class="progress" id="progress" aria-hidden="true"></div>
 <header class="topbar">
   <div class="topbar-in">
-    <div class="brand">
+    <a class="brand" href="#/" data-goto="overview" aria-label="Litmus Labs, back to the Overview">
       <span class="brand-name">Litmus Labs</span>
       <span class="brand-sub">Virtual experiences that teach about the world around us</span>
-    </div>
+    </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
     <nav class="mainnav" id="mainNav" aria-label="Main">
       <div class="pillgroup" role="group" aria-label="Sections">
         <button type="button" data-goto="overview" aria-current="page">Overview</button>
-        <button type="button" data-goto="wings">Zones</button>
-        <button type="button" data-goto="buildnotes">Build Notes</button>
+        <div class="dd" data-dd="zones">
+          <button type="button" class="dd-btn" data-pill="wings" aria-haspopup="true" aria-expanded="false" aria-controls="ddZones">Zones</button>
+          <div class="dd-panel dd-zones" id="ddZones" hidden role="group" aria-label="Zones"></div>
+        </div>
+        <div class="dd" data-dd="rooms">
+          <button type="button" class="dd-btn" data-pill="rooms" aria-haspopup="true" aria-expanded="false" aria-controls="ddRooms">Rooms</button>
+          <div class="dd-panel dd-rooms" id="ddRooms" hidden role="group" aria-label="Rooms"></div>
+        </div>
         <button type="button" data-goto="about">About</button>
-        <button type="button" data-goto="councils">Councils &amp; SOPs</button>
-        <button type="button" data-goto="roadmap">Roadmap</button>
       </div>
     </nav>
   </div>
@@ -1794,31 +1837,12 @@ footer.site{border-top:2px solid var(--ink);margin-top:50px;background:#ffffff;}
 
 <footer class="site">
   <div class="foot-in">
-    <div class="foot-grid">
-      <div><h3>The Lab</h3><ul>
-        <li><button type="button" data-goto="overview">Overview</button></li>
-        <li><button type="button" data-goto="wings">Zones</button></li>
-        <li><button type="button" data-goto="roadmap">Roadmap</button></li>
-        <li><button type="button" data-goto="wing-life">Matthew&rsquo;s Life</button></li>
-      </ul></div>
-      <div><h3>Accessibility wings</h3><ul>
-        <li><button type="button" data-goto="wing-neuro">Neurodiversity: Sensory Overload</button></li>
-        <li><button type="button" data-goto="wing-disability">Disability: Claimed Accessible and Safety</button></li>
-        <li><button type="button" data-goto="wing-chronic">Chronic Conditions</button></li>
-        <li><button type="button" data-goto="wing-voting">Accessible Voting</button></li>
-      </ul></div>
-      <div><h3>Art and advising</h3><ul>
-        <li><button type="button" data-goto="wing-art">Art: The Macro World</button></li>
-        <li><button type="button" data-goto="wing-corporate">Corporate Cube World</button></li>
-        <li><button type="button" data-goto="councils">Councils &amp; SOPs</button></li>
-      </ul></div>
-      <div><h3>The house</h3><ul>
-        <li><a href="https://fixingfriction.com">Fixing Friction</a></li>
-      </ul></div>
-    </div>
+    <nav class="foot-grid sitemap" id="sitemap" aria-label="Site map"></nav>
+    <p class="foot-note"><a href="https://fixingfriction.com">Fixing Friction</a> is the house behind the lab.</p>
     <p class="foot-note">Litmus Labs is the virtual experiences studio of Matthew Cicanese, ADAC: Certified ADA Coordinator, accessibility speaker, trainer and consultant, fine art photographer, and founder of Litmus Collective and Fixing Friction, Fort Collins, Colorado. Reference stills on this site are frames from the Google DeepMind Project Genie video Matthew shared on November 18, 2026, shown as the founding inspiration. Gallery space visuals are concept illustrations, labeled as such, and are never presented as photographs of real venues.</p>
   </div>
 </footer>
+<button type="button" class="totop" id="toTop" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
 <style>
 .rooms.three{grid-template-columns:repeat(3,1fr);}
@@ -1881,8 +1905,12 @@ img{max-width:100%;}
 (function(){
   "use strict";
   var VIEWS =["overview","wings","wing-art","wing-disability","wing-neuro","wing-chronic","wing-corporate","wing-innovation","wing-conservation","wing-voting","wing-life","buildnotes","about","councils","roadmap","subroom","collection"];
-  var PILL_FOR = {"wing-art":"wings","wing-disability":"wings","wing-neuro":"wings","wing-chronic":"wings","wing-corporate":"wings","wing-innovation":"wings","wing-conservation":"wings","wing-voting":"wings","wing-life":"wings","subroom":"wings","collection":"wings"};
+  var PILL_FOR = {"wing-art":"wings","wing-disability":"wings","wing-neuro":"wings","wing-chronic":"wings","wing-corporate":"wings","wing-innovation":"wings","wing-conservation":"wings","wing-voting":"wings","wing-life":"wings","subroom":"rooms","collection":"rooms"};
   var current = "overview";
+  var curRoom = null, curCol = null, restoring = false;
+  var REDUCED = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : {matches:false};
+  function scrollTop0(instant){ window.scrollTo({top:0,left:0,behavior:(instant || REDUCED.matches) ? "instant" : "smooth"}); }
+  function routeHash(name){ if(name === "subroom") return "#/room/" + curRoom; if(name === "collection") return "#/collection/" + curCol; if(name === "overview") return "#/"; if(name.indexOf("wing-") === 0) return "#/wing/" + name; return "#/page/" + name; }
 
   /* ---------- Sound preview (WebAudio, off by default) ---------- */
   var actx = null, noiseNode = null, noiseGain = null, soundOn = false;
@@ -1924,13 +1952,14 @@ img{max-width:100%;}
   /* ---------- View switching ---------- */
   function showView(name, push){
     if(VIEWS.indexOf(name) === -1) name = "overview";
+    if(!restoring && push !== false){ try{ history.replaceState({y:window.scrollY}, "", location.href); }catch(e){} }
     current = name;
     var views = document.querySelectorAll(".view");
     for(var i=0;i<views.length;i++){ views[i].classList.toggle("active", views[i].getAttribute("data-view") === name); }
     var pillTarget = PILL_FOR[name] || name;
     var pills = document.querySelectorAll(".pillgroup button");
     for(var j=0;j<pills.length;j++){
-      if(pills[j].getAttribute("data-goto") === pillTarget){ pills[j].setAttribute("aria-current","page"); }
+      if((pills[j].getAttribute("data-goto") || pills[j].getAttribute("data-pill")) === pillTarget){ pills[j].setAttribute("aria-current","page"); }
       else{ pills[j].removeAttribute("aria-current"); }
     }
     var nav = document.getElementById("mainNav");
@@ -1938,9 +1967,12 @@ img{max-width:100%;}
     if(nav) nav.classList.remove("open");
     if(menuBtn) menuBtn.setAttribute("aria-expanded","false");
     if(soundOn) setSound(false);
-    window.scrollTo(0,0);
-    if(push !== false){
-      try{ history.replaceState(null, "", "#" + name); }catch(e){}
+    if(typeof closeDD === "function") closeDD();
+    scrollTop0(restoring);
+    if(!restoring && push !== false){
+      var hh = routeHash(name);
+      var same = (location.hash || "#/") === hh || (hh === "#/" && (location.hash === "" || location.hash === "#"));
+      try{ if(same){ history.replaceState({y:0}, "", hh); } else { history.pushState({y:0}, "", hh); } }catch(e){}
     }
     var active = document.querySelector('.view[data-view="' + name + '"]');
     if(active){
@@ -2849,6 +2881,7 @@ img{max-width:100%;}
   function openRoom(k){
     var r = ROOMS[k];
     if(!r) return;
+    curRoom = k;
     srBackTarget = r.back;
     srBackCollection = ROOM_COL[k] && COLLECTIONS[ROOM_COL[k]] ? ROOM_COL[k] : null;
     var backBtn = document.getElementById("srBack");
@@ -2973,6 +3006,7 @@ img{max-width:100%;}
   function openCollection(id){
     var c = COLLECTIONS[id];
     if(!c) return;
+    curCol = id;
     colBackTarget = c.wing;
     document.getElementById("colKicker").textContent = c.kicker + " · Collection";
     document.getElementById("colTitle").textContent = c.name;
@@ -3263,9 +3297,117 @@ img{max-width:100%;}
   }
   if(stackBtns.length) renderStack();
 
-  /* ---------- Initial view from hash ---------- */
-  var initial = (location.hash || "").replace("#","");
-  if(initial && VIEWS.indexOf(initial) !== -1){ showView(initial, false); }
+  /* ---------- Part N: routing, menus, sitemap, back to top ---------- */
+  var WINGS = [
+    ["wing-art","The Macro World (Art)"],["wing-disability","Disability: A World Not Built for Us"],["wing-neuro","Neurodiversity: Sensory Overload"],
+    ["wing-chronic","Chronic Conditions: The Fluctuating Body"],["wing-corporate","Corporate Cube World"],["wing-innovation","Innovation"],
+    ["wing-conservation","Conservation: The Disturbance Ring"],["wing-voting","Accessible Voting"],["wing-life","Matthew\u2019s Life"]
+  ];
+  var PAGES = [["overview","Overview"],["wings","Zones"],["buildnotes","Build Notes"],["about","About"],["councils","Councils & SOPs"],["roadmap","Roadmap"]];
+  function esc(t){ return String(t).replace(/&(?![a-z#0-9]+;)/gi,"&amp;"); }
+  function lnk(hash, label, cls){ return '<a href="' + hash + '" data-route="' + hash + '"' + (cls ? ' class="' + cls + '"' : '') + '>' + esc(label) + '</a>'; }
+  function wingBlock(w){
+    var h = "", wid = w[0], seen = {};
+    for(var cid in COLLECTIONS){
+      if(COLLECTIONS[cid].wing !== wid) continue;
+      h += lnk("#/collection/" + cid, COLLECTIONS[cid].name + " (collection)", "col-h");
+      for(var rk in ROOMS){ if(ROOMS[rk].back === wid && ROOM_COL[rk] === cid){ h += lnk("#/room/" + rk, ROOMS[rk].title, "indent"); seen[rk] = 1; } }
+    }
+    for(var rk2 in ROOMS){ if(ROOMS[rk2].back === wid && !seen[rk2]) h += lnk("#/room/" + rk2, ROOMS[rk2].title); }
+    return h;
+  }
+  function buildMenus(){
+    var z = document.getElementById("ddZones"), r = document.getElementById("ddRooms"), sm = document.getElementById("sitemap");
+    var zh = lnk("#/page/wings", "All zones");
+    var rh = "", fh = '<div><h3>The lab</h3>';
+    for(var i=0;i<WINGS.length;i++){
+      zh += lnk("#/wing/" + WINGS[i][0], WINGS[i][1]);
+      rh += '<div class="grp"><p class="grp-h">' + esc(WINGS[i][1]) + '</p>' + lnk("#/wing/" + WINGS[i][0], "Wing overview", "col-h") + wingBlock(WINGS[i]) + '</div>';
+    }
+    for(var p2=0;p2<PAGES.length;p2++){ fh += lnk(p2 === 0 ? "#/" : "#/page/" + PAGES[p2][0], PAGES[p2][1]); }
+    fh += '</div>';
+    for(var k=0;k<WINGS.length;k++){
+      fh += '<div><h3>' + lnk("#/wing/" + WINGS[k][0], WINGS[k][1]) + '</h3>' + wingBlock(WINGS[k]) + '</div>';
+    }
+    if(z) z.innerHTML = zh;
+    if(r) r.innerHTML = '<div class="dd-cols">' + rh + '</div>';
+    if(sm) sm.innerHTML = fh;
+  }
+  buildMenus();
+
+  /* dropdowns */
+  var ddEls = document.querySelectorAll(".dd");
+  function setDD(dd, open){
+    var btn = dd.querySelector(".dd-btn"), panel = dd.querySelector(".dd-panel");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if(open){ panel.removeAttribute("hidden"); } else { panel.setAttribute("hidden",""); }
+  }
+  function closeDD(except){ for(var i=0;i<ddEls.length;i++){ if(ddEls[i] !== except) setDD(ddEls[i], false); } }
+  window.closeDD = closeDD;
+  function isDesktop(){ return window.matchMedia("(min-width:761px) and (hover:hover)").matches; }
+  function sizeBar(){ var hd = document.querySelector(".topbar"); if(hd) document.documentElement.style.setProperty("--topbar-h", hd.getBoundingClientRect().height + "px"); }
+  sizeBar(); window.addEventListener("resize", sizeBar);
+  if(window.ResizeObserver){ try{ new ResizeObserver(sizeBar).observe(document.querySelector(".topbar")); }catch(e){} }
+  Array.prototype.forEach.call(ddEls, function(dd){
+    var btn = dd.querySelector(".dd-btn"), panel = dd.querySelector(".dd-panel"), tOpen = null, tClose = null;
+    btn.addEventListener("click", function(){ var open = btn.getAttribute("aria-expanded") === "true"; closeDD(dd); setDD(dd, !open); sizeBar(); });
+    btn.addEventListener("keydown", function(ev){
+      if(ev.key === "ArrowDown"){ ev.preventDefault(); closeDD(dd); setDD(dd, true); var f = panel.querySelector("a"); if(f) f.focus(); }
+    });
+    dd.addEventListener("keydown", function(ev){
+      if(ev.key === "Escape" && btn.getAttribute("aria-expanded") === "true"){ ev.stopPropagation(); setDD(dd, false); btn.focus(); }
+    });
+    dd.addEventListener("focusout", function(ev){ if(ev.relatedTarget && !dd.contains(ev.relatedTarget)) setDD(dd, false); });
+    dd.addEventListener("mouseenter", function(){ if(!isDesktop()) return; clearTimeout(tClose); tOpen = setTimeout(function(){ closeDD(dd); setDD(dd, true); sizeBar(); }, 140); });
+    dd.addEventListener("mouseleave", function(){ if(!isDesktop()) return; clearTimeout(tOpen); tClose = setTimeout(function(){ setDD(dd, false); }, 260); });
+  });
+  document.addEventListener("click", function(ev){ if(!ev.target.closest(".dd")) closeDD(); });
+
+  /* router */
+  function parseRoute(h){
+    h = (h || "").replace(/^#\/?/, "");
+    if(h === "") return {v:"overview"};
+    var p = h.split("/");
+    if(p[0] === "room" && ROOMS[p[1]]) return {room:p[1]};
+    if(p[0] === "collection" && COLLECTIONS[p[1]]) return {col:p[1]};
+    if((p[0] === "wing" || p[0] === "page") && VIEWS.indexOf(p[1]) !== -1 && p[1] !== "subroom" && p[1] !== "collection") return {v:p[1]};
+    if(p.length === 1 && VIEWS.indexOf(p[0]) !== -1 && p[0] !== "subroom" && p[0] !== "collection") return {v:p[0]};
+    return null;
+  }
+  function renderRoute(r){
+    if(r.room) openRoom(r.room); else if(r.col) openCollection(r.col); else showView(r.v);
+  }
+  document.addEventListener("click", function(ev){
+    var a = ev.target.closest("a[data-route]");
+    if(!a) return;
+    if(ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button === 1) return;
+    ev.preventDefault(); closeDD();
+    var nav = document.getElementById("mainNav"); if(nav) nav.classList.remove("open");
+    var mb = document.getElementById("menuBtn"); if(mb) mb.setAttribute("aria-expanded","false");
+    var r = parseRoute(a.getAttribute("data-route")); if(r) renderRoute(r);
+  });
+  window.addEventListener("popstate", function(e){
+    var r = parseRoute(location.hash);
+    if(!r) return;
+    restoring = true;
+    try{ renderRoute(r); }finally{ restoring = false; }
+    window.scrollTo({top:(e.state && e.state.y) || 0, left:0, behavior:"instant"});
+  });
+  try{ history.scrollRestoration = "manual"; }catch(e){}
+  var r0 = parseRoute(location.hash);
+  if(r0 && r0.v !== "overview"){
+    restoring = true;
+    try{ renderRoute(r0); }finally{ restoring = false; }
+    try{ history.replaceState({y:0}, "", "#/"); history.pushState({y:0}, "", routeHash(current)); }catch(e){}
+  }else{
+    try{ history.replaceState({y:0}, "", location.pathname + location.search + "#/"); }catch(e){}
+  }
+
+  /* back to top */
+  var toTop = document.getElementById("toTop");
+  function syncTop(){ if(toTop) toTop.hidden = window.scrollY < 400; }
+  window.addEventListener("scroll", syncTop, {passive:true}); syncTop();
+  if(toTop) toTop.addEventListener("click", function(){ scrollTop0(false); var m = document.getElementById("main"); if(m){ m.setAttribute("tabindex","-1"); m.focus({preventScroll:true}); } });
 })();
 </script>
 <script>
