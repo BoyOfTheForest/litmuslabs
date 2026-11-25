@@ -394,6 +394,58 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   .drift{animation:none !important;}
 }
 </style>
+<style id="scCss">
+/* Part S: Find Your Rooms scorecard */
+.tourbar{position:sticky;top:var(--topbar-h,64px);z-index:60;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#ffffff;border:2px solid var(--accent-deep);border-radius:12px;padding:4px 6px 4px 6px;margin:0 0 18px;}
+.tourbar[hidden]{display:none;}
+.tour-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 14px 6px 10px;border-radius:999px;background:var(--accent-deep);color:#ffffff;font-weight:700;text-decoration:none;font-size:.95rem;}
+.tour-chip:hover{text-decoration:underline;text-underline-offset:3px;}
+.tour-chip svg{flex:none;}
+.tour-x{appearance:none;border:none;background:none;color:var(--ink);font:inherit;font-weight:700;font-size:.9rem;min-height:44px;min-width:44px;padding:6px 12px;border-radius:8px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.stopline{font-size:.95rem;font-weight:700;color:var(--accent-deep);margin:12px 0 0;}
+.stopline[hidden]{display:none;}
+.sc-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.sc-h3{font-size:1.2rem;margin-bottom:8px;}
+.sc-have{margin:14px 0 0;font-weight:600;color:var(--muted);}
+.sc-have[hidden],.sc-quiz[hidden],#scLanding[hidden],.sc-toast[hidden]{display:none;}
+.sc-quiz{max-width:46rem;margin:0 auto;padding:14px 0 48px;}
+.sc-q{font-size:clamp(1.75rem,4.8vw,2.6rem);margin:0 0 10px;padding:4px 6px;border-radius:8px;}
+.sc-q:focus{outline:3px solid var(--accent);outline-offset:4px;}
+.sc-hint{color:var(--muted);font-weight:600;margin:0 0 20px;}
+.sc-opts{display:grid;gap:10px;margin:0 0 24px;}
+.sc-opts.doors{grid-template-columns:1fr 1fr;}
+.sc-opt{appearance:none;display:block;width:100%;text-align:left;min-height:56px;padding:14px 18px;border:2px solid #627D98;border-radius:12px;background:#ffffff;color:var(--ink);font:inherit;font-weight:600;font-size:1.02rem;line-height:1.35;cursor:pointer;}
+.sc-opt:hover{border-color:var(--accent-deep);}
+.sc-opt[aria-pressed="true"]{border-color:var(--accent-deep);background:#EEF3FF;box-shadow:inset 0 0 0 1px var(--accent-deep);}
+.sc-opt[aria-pressed="true"]::before{content:"\2713\00a0";font-weight:800;color:var(--accent-deep);}
+.sc-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 26px;}
+.sc-bar{height:8px;background:var(--line-soft);border-radius:999px;overflow:hidden;}
+.sc-bar span{display:block;height:100%;background:var(--accent-deep);border-radius:999px;}
+.sc-ptext{margin:10px 0 0;font-size:.92rem;font-weight:700;color:var(--muted);}
+.sc-startover{margin:14px 0 0;}
+.sc-readout p{font-size:1.14rem;color:var(--muted);max-width:44rem;margin:0 0 10px;}
+.sc-start{border:2px solid var(--accent-deep);border-radius:16px;padding:22px 24px;margin:0 0 10px;max-width:46rem;}
+.sc-start p{margin:6px 0 0;color:var(--muted);}
+.sc-h2{font-size:1.7rem;}
+.sc-wing{font-weight:800;color:var(--accent-deep);font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;margin:6px 0 8px;}
+.sc-route{list-style:none;margin:20px 0 0;padding:0;}
+.sc-route .zig{padding:36px 0;}
+.sc-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sc-pair figure{margin:0;}
+.sc-pair img{display:block;width:100%;height:auto;border-radius:12px;aspect-ratio:3/2;object-fit:cover;}
+.sc-pair figcaption{font-size:.84rem;font-weight:700;color:var(--muted);margin-top:6px;}
+.sc-side{margin-top:34px;}
+.sc-carry{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 8px;}
+.sc-shelf{margin-top:26px;}
+.sc-inline{padding:4px 2px;min-height:44px;}
+.sc-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:150;width:min(92vw,34rem);background:var(--ink);color:#ffffff;border-radius:14px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;box-shadow:0 10px 30px rgba(16,42,67,.35);}
+.sc-toast p{margin:0;font-weight:600;font-size:.98rem;flex:1 1 14rem;}
+.sc-tbtn{appearance:none;border:2px solid #ffffff;background:#ffffff;color:var(--ink);font:inherit;font-weight:700;min-height:44px;padding:8px 16px;border-radius:10px;cursor:pointer;margin-left:6px;}
+.sc-tbtn.quiet{background:transparent;color:#ffffff;}
+.sc-tbtn:focus-visible{outline:3px solid #ffffff;outline-offset:3px;}
+@media (max-width:860px){.sc-pair{grid-template-columns:1fr 1fr;}}
+@media (max-width:700px){.sc-cols,.sc-opts.doors{grid-template-columns:1fr;}.sc-start{padding:18px;}.sc-toast{bottom:84px;}.sc-nav .btn{flex:1 1 40%;justify-content:center;}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -466,6 +518,15 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
       <img src="assets/genie-two-doors.jpg" alt="Still from the Google DeepMind Project Genie video Matthew shared: a blank concrete room with two shining doors of light, one opening onto orange desert dunes, one onto deep blue underwater water with jellyfish" width="2002" height="1501">
       <figcaption class="figcap">The spark, shown for reference: a still from the Project Genie video that started this build. A blank room, two doors of light, and a choice. Litmus Labs takes that exact architecture seriously, and rebuilds the room as a white cube.</figcaption>
     </figure>
+  </section>
+
+  <section class="block sc-door" style="padding-top:6px;padding-bottom:6px;">
+    <article class="card">
+      <p class="kicker">A route through the gallery</p>
+      <h3>Not sure where to start? Find your rooms</h3>
+      <p>A short set of questions that hands you a route: six rooms, in the order to visit them, starting with the one that will meet you where you are.</p>
+      <p><a class="btn primary" href="#/scorecard" data-route="#/scorecard">Find my rooms</a></p>
+    </article>
   </section>
 
   <section class="block" style="padding-bottom:22px;">
@@ -1327,12 +1388,14 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
 
 <!-- ================= SUB ROOM (SHARED) ================= -->
 <div class="view" data-view="subroom">
+  <div class="tourbar" id="tourBar" role="region" aria-label="Your route" hidden><a class="tour-chip" id="tourBack" href="#/scorecard/results" data-route="#/scorecard/results"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M19 12H6M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Return to my results</span></a><button class="tour-x" type="button" id="tourX" aria-label="Dismiss the Return to my results banner">Dismiss</button></div>
   <section class="winghead">
     <nav class="crumbs" id="srCrumbs" aria-label="Breadcrumb"></nav>
     <p class="backrow"><button class="textbtn" type="button" id="srBack">&larr; Back to the wing</button></p>
     <p class="kicker" id="srKicker">Sub room</p>
     <h1 id="srTitle">Room</h1>
     <p class="lede" id="srPremise"></p>
+    <p class="stopline" id="stopLine" hidden></p>
   </section>
   <figure class="sr-hero">
     <img id="srImg" src="assets/hub-white-cube.webp" alt="Concept visual for Litmus Labs: a pristine white cube gallery hall with large nature photographs on the walls and three arched portals of light opening onto a green forest, deep blue water, and warm desert dunes" width="1920" height="1280">
@@ -1769,6 +1832,72 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   </section>
 </div>
 
+<!-- ================= FIND YOUR ROOMS (SCORECARD) ================= -->
+<div class="view" data-view="scorecard">
+  <div id="scLanding">
+    <section class="winghead">
+      <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Find Your Rooms</span></nav>
+      <p class="kicker">Find Your Rooms &middot; Wayfinding</p>
+      <h1>Which rooms were built for you?</h1>
+      <p class="lede">Litmus Labs is a gallery of virtual experiences that teach about the world around us. It is bigger than one visit. This short set of questions reads what you brought with you today and hands you a route: six rooms, in the order to visit them, starting with the one that will meet you where you are. It cannot tell you who you are, and it does not try. It only finds your door.</p>
+      <p class="sc-have" id="scHave" hidden>You already have a route in this visit. <a href="#/scorecard/results" data-route="#/scorecard/results">Return to my results</a></p>
+      <div class="btnrow"><button class="btn primary" type="button" data-sc="start">Find my rooms</button></div>
+    </section>
+    <section class="block">
+      <div class="sc-cols">
+        <article class="card"><h2 class="sc-h3">Who it is for</h2><p>For anyone arriving at Litmus Labs for the first time, and anyone coming back who only ever saw one wing. Leaders, teachers, and the simply curious all start here.</p></article>
+        <article class="card"><h2 class="sc-h3">Who it is not for</h2><p>If you already know the room you want, skip this and take the Rooms menu. The route is for finding a start, not for slowing down a person who has one.</p></article>
+      </div>
+      <h2 class="sec" style="margin-top:34px;">What you get</h2>
+      <div class="body-copy"><p>You arrive facing nine wings. You leave with a route of your own: your six rooms in visit order, a recommended first stop, and a copy of the route to keep. The result is a starting point, not a grade or a verdict. Discover the wing that pulls you, understand why it pulled you, and unlock the rooms built around it.</p></div>
+      <h2 class="sec" style="margin-top:34px;">How it works</h2>
+      <div class="body-copy"><p>Your answers are read once, on this page, to build your route. Nothing is stored, sent, or saved anywhere, including in your browser. When you leave, the route leaves with you, unless you download your copy.</p></div>
+      <div class="btnrow"><button class="btn primary" type="button" data-sc="start">Find my rooms</button></div>
+    </section>
+    <section class="block" id="scTestimonials" hidden aria-label="What visitors say"></section>
+    <section class="block sc-shelf" aria-label="Elsewhere in the lab">
+      <p class="kicker">The wider shelf</p>
+      <p class="body-copy" style="margin-top:0;"><a href="#/" data-route="#/">The Overview</a>, <a href="#/page/wings" data-route="#/page/wings">the nine wings</a>, and <a href="https://fixingfriction.com/frictions/">Find Your Frictions at Fixing Friction</a> for visitors whose route points at their own working life.</p>
+    </section>
+  </div>
+  <section class="sc-quiz" id="scQuiz" hidden aria-label="Find Your Rooms questions">
+    <h1 class="sc-q" id="scQ" tabindex="-1"></h1>
+    <p class="sc-hint" id="scHint"></p>
+    <div class="sc-opts" id="scOpts" role="group" aria-labelledby="scQ"></div>
+    <div class="sc-nav">
+      <button class="btn ghost" type="button" id="scPrev">Previous</button>
+      <button class="btn primary" type="button" id="scNext">Continue</button>
+    </div>
+    <div class="sc-prog">
+      <div class="sc-bar" id="scBarWrap" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Question progress"><span id="scBar"></span></div>
+      <p class="sc-ptext" id="scPText"></p>
+    </div>
+    <p class="sc-startover"><button class="textbtn" type="button" id="scOver">Start over</button></p>
+  </section>
+</div>
+
+<div class="view" data-view="scorecard-results">
+  <section class="winghead">
+    <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="scorecard">Find Your Rooms</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">My results</span></nav>
+    <p class="kicker">Find Your Rooms &middot; Your route</p>
+    <h1>Your route through the gallery</h1>
+    <div class="sc-readout" id="scReadout"></div>
+  </section>
+  <section class="block" style="padding-top:8px;">
+    <div class="sc-start" id="scStart"></div>
+    <ol class="sc-route" id="scRoute" aria-label="Your six rooms in visit order"></ol>
+    <div class="plate sc-side"><p class="plabel">The side door</p><p>The Regulation Room is open at any moment of this route. Leaving a room early is information, never failure. <a href="#/room/ov-regulation" data-route="#/room/ov-regulation">Open the Regulation Room</a></p></div>
+    <div class="sc-carry" role="group" aria-label="Keep your results">
+      <button class="btn primary" type="button" id="scDl">Download my results</button>
+      <button class="btn ghost" type="button" id="scCopy">Copy my results</button>
+      <button class="btn ghost" type="button" id="scRetake">Retake</button>
+    </div>
+    <p class="copy-status" id="scCarryStatus" role="status" aria-live="polite"></p>
+    <div class="sc-shelf"><p class="kicker">The wider shelf</p><p class="body-copy" style="margin-top:0;">Want the whole gallery instead? Go to <a href="#/" data-route="#/">the Overview</a> or <button class="textbtn sc-inline" type="button" id="scOpenRooms">open the Rooms menu</button>.</p></div>
+  </section>
+</div>
+<div class="sc-toast" id="scToast" role="status" hidden><p>Download your results so you don&rsquo;t have to take the quiz again.</p><div><button type="button" class="sc-tbtn" id="scToastDl">Download</button><button type="button" class="sc-tbtn quiet" id="scToastX" aria-label="Dismiss this reminder">Dismiss</button></div></div>
+
 <!-- ================= BUILD NOTES ================= -->
 <div class="view" data-view="buildnotes">
   <section class="winghead">
@@ -1905,13 +2034,13 @@ img{max-width:100%;}
 <script>
 (function(){
   "use strict";
-  var VIEWS =["overview","wings","wing-art","wing-disability","wing-neuro","wing-chronic","wing-corporate","wing-innovation","wing-conservation","wing-voting","wing-life","buildnotes","about","councils","roadmap","subroom","collection"];
+  var VIEWS =["overview","wings","wing-art","wing-disability","wing-neuro","wing-chronic","wing-corporate","wing-innovation","wing-conservation","wing-voting","wing-life","buildnotes","about","councils","roadmap","subroom","collection","scorecard","scorecard-results"];
   var PILL_FOR = {"wing-art":"wings","wing-disability":"wings","wing-neuro":"wings","wing-chronic":"wings","wing-corporate":"wings","wing-innovation":"wings","wing-conservation":"wings","wing-voting":"wings","wing-life":"wings","subroom":"rooms","collection":"rooms"};
   var current = "overview";
   var curRoom = null, curCol = null, restoring = false;
   var REDUCED = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : {matches:false};
   function scrollTop0(instant){ window.scrollTo({top:0,left:0,behavior:(instant || REDUCED.matches) ? "instant" : "smooth"}); }
-  function routeHash(name){ if(name === "subroom") return "#/room/" + curRoom; if(name === "collection") return "#/collection/" + curCol; if(name === "overview") return "#/"; if(name.indexOf("wing-") === 0) return "#/wing/" + name; return "#/page/" + name; }
+  function routeHash(name){ if(name === "scorecard") return "#/scorecard"; if(name === "scorecard-results") return "#/scorecard/results"; if(name === "subroom") return "#/room/" + curRoom; if(name === "collection") return "#/collection/" + curCol; if(name === "overview") return "#/"; if(name.indexOf("wing-") === 0) return "#/wing/" + name; return "#/page/" + name; }
 
   /* ---------- Sound preview (WebAudio, off by default) ---------- */
   var actx = null, noiseNode = null, noiseGain = null, soundOn = false;
@@ -1953,6 +2082,8 @@ img{max-width:100%;}
   /* ---------- View switching ---------- */
   function showView(name, push){
     if(VIEWS.indexOf(name) === -1) name = "overview";
+    if(name === "scorecard-results" && !scRoute) name = "scorecard";
+    if(current === "scorecard-results" && name !== "scorecard-results" && scRoute) scRoute.y = window.scrollY;
     if(!restoring && push !== false){ try{ history.replaceState({y:window.scrollY}, "", location.href); }catch(e){} }
     current = name;
     var views = document.querySelectorAll(".view");
@@ -1970,6 +2101,12 @@ img{max-width:100%;}
     if(soundOn) setSound(false);
     if(typeof closeDD === "function") closeDD();
     scrollTop0(restoring);
+    if(name === "scorecard") scShowLanding();
+    if(name !== "scorecard-results") scToastHide();
+    if(name === "scorecard-results"){
+      if(scRoute && scRoute.y && !restoring) window.scrollTo({top:scRoute.y,left:0,behavior:"instant"});
+      if(scToastPending){ scToastPending = false; scToastShow(); }
+    }
     if(!restoring && push !== false){
       var hh = routeHash(name);
       var same = (location.hash || "#/") === hh || (hh === "#/" && (location.hash === "" || location.hash === "#"));
@@ -3004,6 +3141,7 @@ img{max-width:100%;}
     pRow.appendChild(hubBtn);
     var status = document.querySelector('[data-view="subroom"] [data-copy-status]');
     if(status) status.textContent = "";
+    scTourDecorate(k);
     showView("subroom");
   }
   document.addEventListener("click", function(ev){
@@ -3309,6 +3447,7 @@ img{max-width:100%;}
   if(stackBtns.length) renderStack();
 
   /* ---------- Part N: routing, menus, sitemap, back to top ---------- */
+  var SC_NAME = "Find Your Rooms";
   var WINGS = [
     ["wing-art","The Macro World (Art)"],["wing-disability","Disability: A World Not Built for Us"],["wing-neuro","Neurodiversity: Sensory Overload"],
     ["wing-chronic","Chronic Conditions: The Fluctuating Body"],["wing-corporate","Corporate Cube World"],["wing-innovation","Innovation"],
@@ -3336,6 +3475,7 @@ img{max-width:100%;}
       rh += '<div class="grp"><p class="grp-h">' + esc(WINGS[i][1]) + '</p>' + lnk("#/wing/" + WINGS[i][0], "Wing overview", "col-h") + wingBlock(WINGS[i]) + '</div>';
     }
     for(var p2=0;p2<PAGES.length;p2++){ fh += lnk(p2 === 0 ? "#/" : "#/page/" + PAGES[p2][0], PAGES[p2][1]); }
+    fh += lnk("#/scorecard", SC_NAME);
     fh += '</div>';
     for(var k=0;k<WINGS.length;k++){
       fh += '<div><h3>' + lnk("#/wing/" + WINGS[k][0], WINGS[k][1]) + '</h3>' + wingBlock(WINGS[k]) + '</div>';
@@ -3374,11 +3514,341 @@ img{max-width:100%;}
   });
   document.addEventListener("click", function(ev){ if(!ev.target.closest(".dd")) closeDD(); });
 
+  /* ---------- Part S: Find Your Rooms scorecard ----------
+     Reads ROOMS / ROOM_PAIRS (the same objects the menus are built from). All state lives in the
+     variables below, in page memory only. Nothing is written to any browser storage. */
+  var SC_WINGS = [
+    {k:"art",id:"wing-art",name:"The Macro World",tier:2},
+    {k:"neuro",id:"wing-neuro",name:"Sensory Overload",tier:3},
+    {k:"disability",id:"wing-disability",name:"A World Not Built For Us",tier:2},
+    {k:"chronic",id:"wing-chronic",name:"The Fluctuating Body",tier:2},
+    {k:"conservation",id:"wing-conservation",name:"The Disturbance Ring",tier:2},
+    {k:"voting",id:"wing-voting",name:"Accessible Voting",tier:2},
+    {k:"corporate",id:"wing-corporate",name:"Corporate Cube World",tier:2},
+    {k:"innovation",id:"wing-innovation",name:"Innovation",tier:2}
+  ];
+  var SC_TIER_X = {"art-scale":1,"art-salamander":1,"art-sanctuary":1,"art-understory":1,"ov-regulation":1,"ov-workload":2,"ov-home":2,"ov-tasks":2,"ov-guilt":2,"ov-time":2,
+    "dis-cost":1,"dis-works":1,"dis-signage":1,"safety-works":1,"safety-alarm":3,"safety-stairs":3,"safety-refuge":3,"ch-rest":1,"co-wildfire":3,"vote-dropbox":1,"vote-polling":1,"cc-quiet":1,"in-tactile":1};
+  var SC_RESOLVE = {"dis-works":1,"safety-works":1,"cc-quiet":1,"art-sanctuary":1,"ch-rest":1,"ov-regulation":1};
+  function scDoors(pts){
+    var o = [];
+    for(var i=0;i<SC_WINGS.length;i++){ var w = {}; w[SC_WINGS[i].k] = pts; o.push({t:SC_WINGS[i].name, w:w, door:SC_WINGS[i].k}); }
+    return o;
+  }
+  var SC_Q4 = scDoors(2); SC_Q4.push({t:"One door is enough.", none:true});
+  var SC_Q = [
+    {part:0, text:"What brings you to Litmus Labs today?", opts:[
+      {t:"I lead people, and I want to understand what they live.", w:{corporate:3,disability:2}, lens:"You came as someone who leads people and wants to understand what they live."},
+      {t:"I teach, train, or design things for other people.", w:{corporate:2,neuro:2}, lens:"You came as someone who teaches, trains, or designs for other people."},
+      {t:"I live some of this myself.", w:{neuro:3,chronic:2}, lens:"You came with some of this already lived."},
+      {t:"I work on access, voting, or public life.", w:{voting:3,disability:2}, lens:"You came from the work of access, voting, or public life."},
+      {t:"Honestly, I am here for the wonder.", w:{art:3,conservation:2}, lens:"You came for the wonder."}]},
+    {part:0, text:"Which sentence sounds most like your week?", opts:[
+      {t:"Everything arrives at once, and it is all loud.", w:{neuro:3}},
+      {t:"The building itself keeps saying no.", w:{disability:3}},
+      {t:"My energy decides my calendar, not me.", w:{chronic:3}},
+      {t:"The meeting room is the hardest room I enter.", w:{corporate:3}},
+      {t:"I keep thinking about what is disappearing.", w:{conservation:3,art:1}}]},
+    {part:1, text:"Choose one door.", opts:scDoors(4)},
+    {part:1, text:"And a second door, if one calls to you.", opts:SC_Q4},
+    {part:2, text:"How should this visit run?", opts:[
+      {t:"Gentle first, deeper as I go.", ord:"asc", run:"The route runs gentle first and deepens as you go."},
+      {t:"Take me straight to the hardest room.", ord:"peak", run:"The route starts at the hardest room and works down from there."},
+      {t:"Surprise me.", ord:"site", run:"The route runs in the gallery’s own order."}]},
+    {part:2, text:"What should you carry out of this visit?", opts:[
+      {t:"A story to retell.", r:{"art-salamander":3,"co-beetle":3}},
+      {t:"Something to change where I work.", r:{"cc-quiet":3,"dis-works":3}},
+      {t:"Proof that access can work.", r:{"safety-works":3,"vote-polling":3}},
+      {t:"A quieter nervous system.", r:{"ov-regulation":3,"ch-rest":3}}]}
+  ];
+  var SC_PARTS = [["Where you stand"],["What pulls you"],["How you visit"]];
+  var scAns = [null,null,null,null,null,null], scStep = 0, scAdv = null;
+  var scRoute = null, scBannerOff = false, scDownloaded = false, scToastShown = false, scToastPending = false, scToastT = null;
+
+  function scEl(id){ return document.getElementById(id); }
+  function scPlain(html){ var d = document.createElement("div"); d.innerHTML = html; return d.textContent || ""; }
+  function scWingOf(id){ for(var i=0;i<SC_WINGS.length;i++){ if(SC_WINGS[i].id === id) return i; } return -1; }
+
+  /* the site’s visible order, the same one the Rooms menu uses: collections in order, then rooms outside a collection */
+  function scSiteOrder(){
+    var o = [];
+    for(var i=0;i<SC_WINGS.length;i++){
+      var wid = SC_WINGS[i].id, seen = {}, rk;
+      for(var cid in COLLECTIONS){
+        if(COLLECTIONS[cid].wing !== wid) continue;
+        for(rk in ROOMS){ if(ROOMS[rk].back === wid && ROOM_COL[rk] === cid){ o.push(rk); seen[rk] = 1; } }
+      }
+      for(rk in ROOMS){ if(ROOMS[rk].back === wid && !seen[rk]) o.push(rk); }
+    }
+    return o;
+  }
+  function scCompute(){
+    var wp = {}, rp = {}, i, j;
+    for(i=0;i<SC_WINGS.length;i++) wp[SC_WINGS[i].k] = 0;
+    var mode = "asc", lens = null, run = null, q3 = null;
+    for(i=0;i<SC_Q.length;i++){
+      if(scAns[i] === null) continue;
+      var o = SC_Q[i].opts[scAns[i]];
+      if(o.w){ for(var wk in o.w){ wp[wk] += o.w[wk]; } }
+      if(o.r){ for(var rk in o.r){ rp[rk] = (rp[rk] || 0) + o.r[rk]; } }
+      if(o.ord){ mode = o.ord; run = o.run; }
+      if(o.lens) lens = o.lens;
+      if(i === 2 && o.door) q3 = o.door;
+    }
+    var rows = [], n = 0, seq = scSiteOrder();
+    for(var sq=0; sq<seq.length; sq++){
+      var id = seq[sq];
+      var wi = scWingOf(ROOMS[id].back);
+      if(wi < 0) continue;
+      rows.push({id:id, wi:wi, ord:n++, rp:rp[id] || 0, wp:wp[SC_WINGS[wi].k], tier:SC_TIER_X[id] || SC_WINGS[wi].tier});
+    }
+    for(i=0;i<rows.length;i++) rows[i].score = rows[i].rp + rows[i].wp;
+    rows.sort(function(a,b){ return (b.score-a.score) || (b.rp-a.rp) || (b.wp-a.wp) || (a.wi-b.wi) || (a.ord-b.ord); });
+    for(i=0;i<rows.length;i++) rows[i].rank = i;
+    var picks = [], cnt = {};
+    for(i=0;i<rows.length && picks.length<6;i++){
+      var c = cnt[rows[i].wi] || 0;
+      if(c >= 3) continue;
+      cnt[rows[i].wi] = c + 1; picks.push(rows[i]);
+    }
+    picks.sort(function(a,b){
+      if(mode === "peak") return (b.tier-a.tier) || (a.rank-b.rank);
+      if(mode === "site") return (a.wi-b.wi) || (a.rank-b.rank);
+      return (a.tier-b.tier) || (a.rank-b.rank);
+    });
+    var best = null;
+    for(i=0;i<picks.length;i++){ if(SC_RESOLVE[picks[i].id] && (best === null || picks[i].rank < picks[best].rank)) best = i; }
+    if(best !== null){ var moved = picks.splice(best,1)[0]; picks.push(moved); }
+    var top = -1, topPts = 0;
+    for(j=0;j<SC_WINGS.length;j++){ if(wp[SC_WINGS[j].k] > topPts){ topPts = wp[SC_WINGS[j].k]; top = j; } }
+    return {picks:picks, wp:wp, top:top, topPts:topPts, q3:q3, lens:lens, run:run, mode:mode};
+  }
+
+  function scReadout(res){
+    var s = [];
+    if(res.topPts === 0){
+      s.push("You skipped the questions that read your week and your doors, so this route is the gallery’s gentle default: the first rooms of the first wings, in the order to visit them.");
+      if(res.run) s.push(res.run);
+      return s;
+    }
+    if(res.lens) s.push(res.lens);
+    var tn = SC_WINGS[res.top].name;
+    if(res.q3 && res.q3 !== SC_WINGS[res.top].k){
+      var qn = ""; for(var i=0;i<SC_WINGS.length;i++){ if(SC_WINGS[i].k === res.q3) qn = SC_WINGS[i].name; }
+      s.push("You chose " + qn + " as your door, but the pull of " + tn + " ran stronger across your answers, so your route follows what you told us about what brought you and about your week, with your chosen door counted too.");
+    }else{
+      s.push("The pull that shaped your route was " + tn + ".");
+    }
+    s.push(res.run || "The route runs gentle first and deepens as you go.");
+    return s;
+  }
+
+  function scMakeImgs(id){
+    var pr = ROOMS[id].pair || ROOM_PAIRS[id];
+    if(!pr) return null;
+    var d = document.createElement("div"); d.className = "media sc-pair";
+    [[pr.pImg, pr.pAlt, pr.pLabel || "The problem"],[pr.sImg, pr.sAlt, pr.sLabel || "The solution"]].forEach(function(x){
+      var f = document.createElement("figure"); var im = document.createElement("img");
+      im.src = x[0]; im.alt = x[1]; im.loading = "lazy"; im.decoding = "async"; im.width = 1920; im.height = 1280;
+      var fc = document.createElement("figcaption"); fc.textContent = x[2];
+      f.appendChild(im); f.appendChild(fc); d.appendChild(f);
+    });
+    return d;
+  }
+
+  function scRender(res){
+    var ro = scEl("scReadout"); ro.innerHTML = "";
+    scReadout(res).forEach(function(t){ var p = document.createElement("p"); p.textContent = t; ro.appendChild(p); });
+    var first = res.picks[0], fr = ROOMS[first.id];
+    var st = scEl("scStart"); st.innerHTML = "";
+    var k = document.createElement("p"); k.className = "kicker"; k.textContent = "Your recommended starting point"; st.appendChild(k);
+    var h = document.createElement("h2"); h.className = "sc-h2"; h.textContent = "Start with " + fr.title; st.appendChild(h);
+    var wn = document.createElement("p"); wn.className = "sc-wing"; wn.textContent = SC_WINGS[first.wi].name; st.appendChild(wn);
+    var pm = document.createElement("p"); pm.innerHTML = fr.premise; st.appendChild(pm);
+    var ol = scEl("scRoute"); ol.innerHTML = "";
+    res.picks.forEach(function(p, i){
+      var r = ROOMS[p.id];
+      var li = document.createElement("li"); li.className = "zig" + (i % 2 ? " flip" : "");
+      var media = scMakeImgs(p.id); if(media) li.appendChild(media);
+      var tx = document.createElement("div"); tx.className = "txt";
+      var kk = document.createElement("p"); kk.className = "kicker"; kk.textContent = "Stop " + (i+1) + (i === 0 ? " · Start here" : ""); tx.appendChild(kk);
+      var hh = document.createElement("h3"); hh.textContent = r.title; tx.appendChild(hh);
+      var ww = document.createElement("p"); ww.className = "sc-wing"; ww.textContent = SC_WINGS[p.wi].name; tx.appendChild(ww);
+      var pp = document.createElement("p"); pp.innerHTML = r.premise; tx.appendChild(pp);
+      var a = document.createElement("a"); a.className = "btn " + (i === 0 ? "primary" : "ghost"); a.href = "#/room/" + p.id; a.setAttribute("data-route", "#/room/" + p.id);
+      a.textContent = "Visit this room"; a.setAttribute("aria-label", "Visit this room: " + r.title);
+      tx.appendChild(a); li.appendChild(tx); ol.appendChild(li);
+    });
+  }
+
+  function scTextResults(){
+    var t = "My Litmus Labs route\n\n";
+    scRoute.ids.forEach(function(id, i){
+      t += "Stop " + (i+1) + ": " + ROOMS[id].title + " (" + SC_WINGS[scWingOf(ROOMS[id].back)].name + ")\nhttps://litmuslabs.org/#/room/" + id + "\n\n";
+    });
+    return t + "The Regulation Room is open at any moment of this route: https://litmuslabs.org/#/room/ov-regulation\n";
+  }
+  function scHtmlEsc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  function scDownload(){
+    if(!scRoute) return;
+    var h = "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>My Litmus Labs route</title>" +
+      "<style>body{font-family:Arial,Helvetica,sans-serif;color:#102A43;background:#fff;max-width:44rem;margin:0 auto;padding:28px 20px;line-height:1.55}h1{font-size:1.9rem;line-height:1.2}h2{font-size:1.25rem;margin:0 0 4px}.w{color:#334E68;font-weight:700;margin:0 0 6px}li{margin:0 0 22px;padding:0 0 18px;border-bottom:1px solid #DCE8F5}a{color:#1E3A8A}p.n{color:#334E68}</style></head><body>" +
+      "<h1>My Litmus Labs route</h1><p class=\"n\">Six rooms, in the order to visit them. This page was made in your browser and sent nowhere.</p>";
+    h += "<ol>";
+    scRoute.ids.forEach(function(id, i){
+      var r = ROOMS[id];
+      h += "<li><h2>Stop " + (i+1) + ": " + scHtmlEsc(r.title) + "</h2><p class=\"w\">" + scHtmlEsc(SC_WINGS[scWingOf(r.back)].name) + "</p><p>" + scHtmlEsc(scPlain(r.premise)) + "</p><p><a href=\"https://litmuslabs.org/#/room/" + id + "\">Visit this room</a></p></li>";
+    });
+    h += "</ol><p>The Regulation Room is open at any moment of this route. Leaving a room early is information, never failure. <a href=\"https://litmuslabs.org/#/room/ov-regulation\">Open the Regulation Room</a></p></body></html>";
+    var url = URL.createObjectURL(new Blob([h], {type:"text/html"}));
+    var a = document.createElement("a"); a.href = url; a.download = "my-litmus-labs-route.html"; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
+    scDownloaded = true; scToastHide();
+    scEl("scCarryStatus").textContent = "Your results were made as a page in your browser and offered as a download. Nothing was sent anywhere.";
+  }
+  function scCopy(){
+    if(!scRoute) return;
+    var text = scTextResults(), st = scEl("scCarryStatus");
+    function ok(){ st.textContent = "Copied. Your route is on your clipboard."; }
+    function fb(){
+      var ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); ok(); }catch(e){ st.textContent = "Copy did not work here. Use Download my results instead."; }
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok, fb); } else { fb(); }
+  }
+
+  function scToastShow(){
+    if(scToastShown || scDownloaded || !scRoute) return;
+    scToastShown = true; scEl("scToast").hidden = false;
+  }
+  function scToastHide(){ var t = scEl("scToast"); if(t) t.hidden = true; }
+  function scToastArm(){
+    clearTimeout(scToastT); scToastPending = false;
+    scToastT = setTimeout(function(){ if(current === "scorecard-results"){ scToastShow(); } else { scToastPending = true; } }, 15000);
+  }
+
+  function scShowLanding(){
+    scEl("scLanding").hidden = false; scEl("scQuiz").hidden = true;
+    scEl("scHave").hidden = !scRoute;
+    clearTimeout(scAdv);
+  }
+  function scDraw(){
+    var q = SC_Q[scStep], host = scEl("scOpts"), pt = q.part;
+    var posInPart = scStep - pt * 2 + 1;
+    var qEl = scEl("scQ"); qEl.textContent = q.text;
+    scEl("scHint").textContent = scStep === 3 ? "Optional. You can also skip." : "Choose one, or continue without answering.";
+    host.innerHTML = "";
+    host.className = "sc-opts" + (scStep === 2 || scStep === 3 ? " doors" : "");
+    q.opts.forEach(function(o, i){
+      var b = document.createElement("button"); b.type = "button"; b.className = "sc-opt";
+      b.setAttribute("aria-pressed", scAns[scStep] === i ? "true" : "false"); b.textContent = o.t;
+      b.addEventListener("click", function(){
+        scAns[scStep] = i;
+        var all = host.querySelectorAll(".sc-opt");
+        for(var m=0;m<all.length;m++) all[m].setAttribute("aria-pressed", all[m] === b ? "true" : "false");
+        scSyncNext(); clearTimeout(scAdv); scAdv = setTimeout(scNext, 650);
+      });
+      host.appendChild(b);
+    });
+    scSyncNext();
+    scEl("scPText").textContent = "Part " + (pt+1) + " of 3: " + SC_PARTS[pt][0] + ", question " + posInPart + " of 2";
+    var bar = scEl("scBarWrap"); bar.setAttribute("aria-valuenow", String(scStep+1)); bar.setAttribute("aria-valuetext", "Question " + (scStep+1) + " of 6");
+    scEl("scBar").style.width = (((scStep+1) / 6) * 100) + "%";
+  }
+  function scSyncNext(){
+    var answered = scAns[scStep] !== null, last = scStep === 5, nx = scEl("scNext");
+    nx.textContent = last ? (answered ? "See my route" : "See my route without answering") : (answered ? "Next" : "Continue without answering");
+  }
+  function scGo(step, focus){
+    clearTimeout(scAdv); scStep = step; scDraw();
+    if(focus){ var q = scEl("scQ"); q.focus({preventScroll:true}); }
+  }
+  function scStart(){
+    scAns = [null,null,null,null,null,null];
+    scEl("scLanding").hidden = true; scEl("scQuiz").hidden = false;
+    scEl("scHave").hidden = true;
+    window.scrollTo({top:0,left:0,behavior:"instant"});
+    scGo(0, true);
+  }
+  function scNext(){
+    clearTimeout(scAdv);
+    if(current !== "scorecard" || scEl("scQuiz").hidden) return;
+    if(scStep < 5){ scGo(scStep + 1, true); return; }
+    var res = scCompute();
+    scRender(res);
+    scRoute = {ids:res.picks.map(function(p){ return p.id; }), y:0};
+    scBannerOff = false; scDownloaded = false; scToastShown = false;
+    scEl("scCarryStatus").textContent = "";
+    scToastArm();
+    showView("scorecard-results");
+  }
+  function scPrev(){
+    clearTimeout(scAdv);
+    if(scStep > 0){ scGo(scStep - 1, true); return; }
+    scShowLanding();
+    var h = document.querySelector('[data-view="scorecard"] #scLanding h1'); if(h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
+  }
+  function scRetake(){
+    scRoute = null; scToastHide(); clearTimeout(scToastT); scToastShown = false; scToastPending = false;
+    scEl("scReadout").innerHTML = ""; scEl("scStart").innerHTML = ""; scEl("scRoute").innerHTML = "";
+    showView("scorecard"); scStart();
+  }
+  document.addEventListener("click", function(ev){
+    var s = ev.target.closest("[data-sc=start]");
+    if(s){ ev.preventDefault(); scStart(); }
+  });
+  scEl("scNext").addEventListener("click", scNext);
+  scEl("scPrev").addEventListener("click", scPrev);
+  scEl("scOver").addEventListener("click", function(){ scStart(); });
+  scEl("scDl").addEventListener("click", scDownload);
+  scEl("scCopy").addEventListener("click", scCopy);
+  scEl("scRetake").addEventListener("click", scRetake);
+  scEl("scToastDl").addEventListener("click", scDownload);
+  scEl("scToastX").addEventListener("click", function(){ scToastHide(); });
+  scEl("scOpenRooms").addEventListener("click", function(){
+    scrollTop0(false);
+    var dd = document.querySelector('[data-dd=rooms]'); if(dd){ closeDD(dd); setDD(dd, true); sizeBar(); var b = dd.querySelector(".dd-btn"); if(b) b.focus({preventScroll:true}); }
+  });
+
+  /* tour banner, breadcrumb crumb, and the stop line on every room view */
+  function scTourDecorate(k){
+    var bar = scEl("tourBar"), sl = scEl("stopLine"), crumbs = scEl("srCrumbs");
+    var has = !!scRoute;
+    if(bar) bar.hidden = !has || scBannerOff;
+    if(has && crumbs && crumbs.children.length > 1){
+      var b = document.createElement("button"); b.type = "button"; b.textContent = "My results"; b.setAttribute("data-crumb","results");
+      b.addEventListener("click", function(){ showView("scorecard-results"); });
+      var sp = document.createElement("span"); sp.className = "sep"; sp.setAttribute("aria-hidden","true"); sp.textContent = "/";
+      crumbs.insertBefore(b, crumbs.children[2]); crumbs.insertBefore(sp, crumbs.children[3]);
+    }
+    if(sl){
+      var idx = has ? scRoute.ids.indexOf(k) : -1;
+      if(idx < 0){ sl.hidden = true; sl.innerHTML = ""; }
+      else{
+        sl.hidden = false; sl.textContent = "Stop " + (idx+1) + " of your route";
+        if(idx < scRoute.ids.length - 1){
+          var nid = scRoute.ids[idx+1];
+          sl.appendChild(document.createTextNode(" · "));
+          var a = document.createElement("a"); a.href = "#/room/" + nid; a.setAttribute("data-route", "#/room/" + nid);
+          a.textContent = "Next room"; a.setAttribute("aria-label", "Next room: " + ROOMS[nid].title);
+          sl.appendChild(a);
+        }
+      }
+    }
+  }
+  scEl("tourX").addEventListener("click", function(){
+    scBannerOff = true; scEl("tourBar").hidden = true;
+    var h = scEl("srTitle"); if(h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
+  });
+
   /* router */
   function parseRoute(h){
     h = (h || "").replace(/^#\/?/, "");
     if(h === "") return {v:"overview"};
     var p = h.split("/");
+    if(p[0] === "scorecard") return {v:(p[1] === "results" && scRoute) ? "scorecard-results" : "scorecard"};
     if(p[0] === "room" && ROOMS[p[1]]) return {room:p[1]};
     if(p[0] === "collection" && COLLECTIONS[p[1]]) return {col:p[1]};
     if((p[0] === "wing" || p[0] === "page") && VIEWS.indexOf(p[1]) !== -1 && p[1] !== "subroom" && p[1] !== "collection") return {v:p[1]};
@@ -3403,6 +3873,7 @@ img{max-width:100%;}
     restoring = true;
     try{ renderRoute(r); }finally{ restoring = false; }
     window.scrollTo({top:(e.state && e.state.y) || 0, left:0, behavior:"instant"});
+    if(current.indexOf("scorecard") === 0 && location.hash !== routeHash(current)){ try{ history.replaceState(history.state, "", routeHash(current)); }catch(er){} }
   });
   try{ history.scrollRestoration = "manual"; }catch(e){}
   var r0 = parseRoute(location.hash);
