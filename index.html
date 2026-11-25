@@ -1890,7 +1890,7 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="scorecard">Find Your Rooms</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">My results</span></nav>
     <p class="kicker">Find Your Rooms &middot; Your route</p>
-    <h1>Your route through the gallery</h1>
+    <h1>Your route is ready</h1>
     <div class="sc-readout" id="scReadout"></div>
   </section>
   <section class="block" style="padding-top:8px;">
@@ -3548,11 +3548,11 @@ img{max-width:100%;}
   var SC_Q4 = scDoors(2); SC_Q4.push({t:"One door is enough.", none:true});
   var SC_Q = [
     {part:0, text:"What brings you to Litmus Labs today?", opts:[
-      {t:"I lead people, and I want to understand what they live.", w:{corporate:3,disability:2}, lens:"You came as someone who leads people and wants to understand what they live."},
-      {t:"I teach, train, or design things for other people.", w:{corporate:2,neuro:2}, lens:"You came as someone who teaches, trains, or designs for other people."},
-      {t:"I live some of this myself.", w:{neuro:3,chronic:2}, lens:"You came with some of this already lived."},
-      {t:"I work on access, voting, or public life.", w:{voting:3,disability:2}, lens:"You came from the work of access, voting, or public life."},
-      {t:"Honestly, I am here for the wonder.", w:{art:3,conservation:2}, lens:"You came for the wonder."}]},
+      {t:"I lead people, and I want to understand what they live.", w:{corporate:3,disability:2}, lens:"You arrived as a leader, looking for what your people live."},
+      {t:"I teach, train, or design things for other people.", w:{corporate:2,neuro:2}, lens:"You arrived as a teacher and designer, looking for what other people run into."},
+      {t:"I live some of this myself.", w:{neuro:3,chronic:2}, lens:"You arrived carrying some of this yourself."},
+      {t:"I work on access, voting, or public life.", w:{voting:3,disability:2}, lens:"You arrived from public life, where access is the work."},
+      {t:"Honestly, I am here for the wonder.", w:{art:3,conservation:2}, lens:"You arrived for the wonder, which is a fine reason."}]},
     {part:0, text:"Which sentence sounds most like your week?", opts:[
       {t:"Everything arrives at once, and it is all loud.", w:{neuro:3}},
       {t:"The building itself keeps saying no.", w:{disability:3}},
@@ -3562,9 +3562,9 @@ img{max-width:100%;}
     {part:1, text:"Choose one door.", opts:scDoors(4)},
     {part:1, text:"And a second door, if one calls to you.", opts:SC_Q4},
     {part:2, text:"How should this visit run?", opts:[
-      {t:"Gentle first, deeper as I go.", ord:"asc", run:"The route runs gentle first and deepens as you go."},
-      {t:"Take me straight to the hardest room.", ord:"peak", run:"The route starts at the hardest room and works down from there."},
-      {t:"Surprise me.", ord:"site", run:"The route runs in the gallery’s own order."}]},
+      {t:"Gentle first, deeper as I go.", ord:"asc", run:"The route runs gentle first, deeper as you go."},
+      {t:"Take me straight to the hardest room.", ord:"peak", run:"The route takes you to the hardest room early, while you are fresh."},
+      {t:"Surprise me.", ord:"site", run:"The route runs the way the gallery is built."}]},
     {part:2, text:"What should you carry out of this visit?", opts:[
       {t:"A story to retell.", r:{"art-salamander":3,"co-beetle":3}},
       {t:"Something to change where I work.", r:{"cc-quiet":3,"dis-works":3}},
@@ -3635,21 +3635,20 @@ img{max-width:100%;}
   }
 
   function scReadout(res){
-    var s = [];
+    var s = [], dflt = "The route runs gentle first, deeper as you go.";
+    s.push(res.lens || "You arrived without saying why, which is also fine.");
     if(res.topPts === 0){
-      s.push("You skipped the questions that read your week and your doors, so this route is the gallery’s gentle default: the first rooms of the first wings, in the order to visit them.");
-      if(res.run) s.push(res.run);
-      return s;
-    }
-    if(res.lens) s.push(res.lens);
-    var tn = SC_WINGS[res.top].name;
-    if(res.q3 && res.q3 !== SC_WINGS[res.top].k){
-      var qn = ""; for(var i=0;i<SC_WINGS.length;i++){ if(SC_WINGS[i].k === res.q3) qn = SC_WINGS[i].name; }
-      s.push("You chose " + qn + " as your door, but the pull of " + tn + " ran stronger across your answers, so your route follows what you told us about what brought you and about your week, with your chosen door counted too.");
+      s.push("You kept your answers to yourself, so this route is the gallery’s own suggestion: a gentle crossing of its worlds.");
     }else{
-      s.push("The pull that shaped your route was " + tn + ".");
+      var tn = SC_WINGS[res.top].name;
+      if(res.q3 && res.q3 !== SC_WINGS[res.top].k){
+        var qn = ""; for(var i=0;i<SC_WINGS.length;i++){ if(SC_WINGS[i].k === res.q3) qn = SC_WINGS[i].name; }
+        s.push("You chose the door to " + qn + ", and your week pointed at " + tn + ". The route follows both, and where they disagreed, the door you chose governed the top of the route.");
+      }else{
+        s.push("Your answers kept returning to " + tn + ".");
+      }
     }
-    s.push(res.run || "The route runs gentle first and deepens as you go.");
+    s.push(res.run || dflt);
     return s;
   }
 
