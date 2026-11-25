@@ -446,6 +446,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
 @media (max-width:860px){.sc-pair{grid-template-columns:1fr 1fr;}}
 @media (max-width:700px){.sc-cols,.sc-opts.doors{grid-template-columns:1fr;}.sc-start{padding:18px;}.sc-toast{bottom:84px;}.sc-nav .btn{flex:1 1 40%;justify-content:center;}}
 </style>
+<style id="varSize">
+/* Room variations: same card width, grid and image size as the problem and solution pair above them */
+#srVars.rooms{grid-template-columns:1fr 1fr;gap:18px;}
+#srVars .room{padding:0;display:flex;flex-direction:column;overflow:hidden;border-radius:var(--radius);}
+#srVars .room .vimg{width:100%;height:300px;aspect-ratio:auto;object-fit:cover;border-radius:0;margin:0;}
+#srVars .room .rnum{padding:18px 20px 0;}
+#srVars .room h3{padding:0 20px;}
+#srVars .room p:last-child{padding:0 20px 20px;}
+@media (max-width:700px){#srVars.rooms{grid-template-columns:1fr;}#srVars .room .vimg{height:240px;}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
