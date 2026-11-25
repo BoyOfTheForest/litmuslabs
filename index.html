@@ -464,6 +464,22 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
 @media (min-width:761px) and (max-width:900px){.brand{max-width:215px}.pillgroup button{padding:10px 9px}.bar-cta{padding:9px 14px;font-size:.86rem}}
 @media (max-width:760px){.brand{order:0}.menu-btn{order:1}.bar-cta{order:2;padding:9px 14px;font-size:.88rem;}nav.mainnav{order:3}}
 </style>
+<style id="heroCss">
+.herod{position:relative;background:#0b1220;overflow:hidden;}
+.herod .herod-img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:50% 66%;border-radius:0;}
+.herod::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,var(--herod-ov,.5));pointer-events:none;}
+.herod-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:56px 20px 60px;min-height:min(calc(var(--vw,1vw) * 45),760px);display:flex;flex-direction:column;justify-content:flex-end;box-sizing:border-box;}
+.herod .kicker{color:#ffffff;}
+.herod h1{color:#ffffff;text-wrap:balance;}
+.herod .lede,.herod .outcome{color:#ffffff;}
+.herod-cap{max-width:1180px;margin:10px auto 0;padding:0 20px;box-sizing:border-box;}
+.hero{padding-top:0;}
+.hero .herod{margin-top:-44px;}
+@media (max-width:700px){
+  .herod .herod-img{inset:auto 0 0 0;height:auto;aspect-ratio:2.17/1;object-position:50% 100%;}
+  .herod-in{padding:36px 20px calc(var(--vw,1vw) * 46 + 28px);min-height:0;}
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -497,19 +513,21 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
 <!-- ================= OVERVIEW ================= -->
 <div class="view active" data-view="overview">
   <section class="hero">
-    <p class="kicker">Litmus Labs &middot; Founded November 18, 2026</p>
-    <h1>Different virtual experiences that teach about the world around us.</h1>
-    <p class="outcome">Litmus Labs is a white cube gallery you walk into, not a website you scroll past. One calm central hall. Nine thresholds. Every threshold is a portal into a different world, built to let a visitor feel what a fact alone cannot teach.</p>
-    <div class="credrow" aria-label="What Litmus Labs is">
-      <span class="cred">By Matthew Cicanese, ADAC</span>
-      <span class="cred">Fine art photographer</span>
-      <span class="cred">Accessibility speaker, trainer and consultant</span>
-      <span class="cred">Founder, Litmus Collective and Fixing Friction</span>
+    <div class="herod fullbleed herod-hub">
+    <img class="herod-img" src="assets/hub-white-cube.webp" alt="Concept visual for Litmus Labs: a pristine white cube gallery hall with large nature photographs on the walls and three arched portals of light opening onto a green forest, deep blue water, and warm desert dunes" width="1920" height="1280">
+    <div class="herod-in">
+      <p class="kicker">Litmus Labs &middot; Founded November 18, 2026</p>
+      <h1>Different virtual experiences that teach about the world around us.</h1>
+      <p class="outcome">Litmus Labs is a white cube gallery you walk into, not a website you scroll past. One calm central hall. Nine thresholds. Every threshold is a portal into a different world, built to let a visitor feel what a fact alone cannot teach.</p>
+      <div class="credrow" aria-label="What Litmus Labs is">
+        <span class="cred">By Matthew Cicanese, ADAC</span>
+        <span class="cred">Fine art photographer</span>
+        <span class="cred">Accessibility speaker, trainer and consultant</span>
+        <span class="cred">Founder, Litmus Collective and Fixing Friction</span>
+      </div>
     </div>
-    <figure class="herofig fullbleed">
-      <img src="assets/hub-white-cube.webp" alt="Concept visual for Litmus Labs: a pristine white cube gallery hall with large nature photographs on the walls and three arched portals of light opening onto a green forest, deep blue water, and warm desert dunes" width="1920" height="1280">
-      <figcaption class="figcap">Concept visual: the Litmus Labs hub. One calm white cube, portals of light, a different world behind each arch. This is the room every visit starts in.</figcaption>
-    </figure>
+    </div>
+    <p class="figcap herod-cap">Concept visual: the Litmus Labs hub. One calm white cube, portals of light, a different world behind each arch. This is the room every visit starts in.</p>
     <div class="btnrow">
       <button class="btn primary" type="button" data-goto="wings">Enter the zones</button>
       <button class="btn ghost" type="button" data-goto="wing-neuro">Start with the first build: Neurodiversity</button>
@@ -1015,16 +1033,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Art</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Wing 1 &middot; Art &middot; Concept stage</p>
-    <h1>The Macro World: overlooked and underserved species.</h1>
-    <p class="lede">Inspired by the book The Salamander Room. A child brings the forest inside, piece by piece, until the bedroom is the forest. This wing builds that room at gallery scale: a sanctuary that keeps opening into a living forest floor ecosystem.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/room-art-salamander.webp" alt="Concept visual for the Salamander Room: a white cube gallery becoming a living forest floor, centered on one giant fallen tree trunk covered in large glowing orange shelf fungi and moss, with small salamanders at natural scale resting on the bark and leaf litter, a shallow stream edge, and mural scale macro photographs on the walls" width="1920" height="1280" loading="lazy">
-      <figcaption class="figcap">Concept visual: the Salamander Room. Not a giant salamander: a giant fallen tree, large glowing orange fungi, moss and lichen, a stream edge, and salamanders at the size they actually are, living in the ecosystem the room builds around them.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/room-art-salamander.webp" alt="Concept visual for the Salamander Room: a white cube gallery becoming a living forest floor, centered on one giant fallen tree trunk covered in large glowing orange shelf fungi and moss, with small salamanders at natural scale resting on the bark and leaf litter, a shallow stream edge, and mural scale macro photographs on the walls" width="1920" height="1280" loading="lazy">
+    <div class="herod-in">
+      <p class="kicker">Wing 1 &middot; Art &middot; Concept stage</p>
+      <h1>The Macro World: overlooked and underserved&nbsp;species.</h1>
+      <p class="lede">Inspired by the book The Salamander Room. A child brings the forest inside, piece by piece, until the bedroom is the forest. This wing builds that room at gallery scale: a sanctuary that keeps opening into a living forest floor ecosystem.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: the Salamander Room. Not a giant salamander: a giant fallen tree, large glowing orange fungi, moss and lichen, a stream edge, and salamanders at the size they actually are, living in the ecosystem the room builds around them.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -1077,16 +1095,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Disability</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Wing 2 &middot; Accessibility / Disability &middot; Concept stage</p>
-    <h1>Navigating a disabled world in a world not built for us.</h1>
-    <p class="lede">No inspiration framing, no pity. Just an ordinary day of errands in a built environment that keeps saying no, and a final room that shows how easily it could have said yes.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/col-claimed.webp" alt="Concept visual for the Disability wing: an ordinary city morning rendered inside a white cube gallery at wheelchair height, a storefront, a bus stop, and a service counter, with soft amber outlines marking where the design quietly fails" width="1920" height="1280" loading="lazy">
-      <figcaption class="figcap">Concept visual: the Disability wing. An ordinary morning, rendered honestly, with the failures outlined where they hide.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/col-claimed.webp" alt="Concept visual for the Disability wing: an ordinary city morning rendered inside a white cube gallery at wheelchair height, a storefront, a bus stop, and a service counter, with soft amber outlines marking where the design quietly fails" width="1920" height="1280" loading="lazy">
+    <div class="herod-in">
+      <p class="kicker">Wing 2 &middot; Accessibility / Disability &middot; Concept stage</p>
+      <h1>Navigating a disabled world in a world not built for&nbsp;us.</h1>
+      <p class="lede">No inspiration framing, no pity. Just an ordinary day of errands in a built environment that keeps saying no, and a final room that shows how easily it could have said yes.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: the Disability wing. An ordinary morning, rendered honestly, with the failures outlined where they hide.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -1155,16 +1173,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Neurodiversity</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Accessibility / Neurodiversity / Sensory Overload &middot; Wing 3 &middot; Project 01, first build</p>
-    <h1>Navigating a neurodivergent world in a world not built for us.</h1>
-    <p class="lede">Inside this wing sits Sensory Overload: eleven sub rooms, one for each kind of too much, arranged around the white cube where the first build happens. Overload here is never a single loud moment. It accumulates, over time, the way it does in a real day.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/wing-overload-gallery.webp" alt="Concept visual for the Sensory Overload wing: a white cube gallery whose walls are crowded floor to ceiling with overlapping framed artworks and printed notices under harsh bright ceiling light panels" width="1920" height="1280">
-      <figcaption class="figcap">Concept visual: the white cube at peak information load. Same room as the calm hub. Nothing about the architecture changed except how much it asks of you.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/wing-overload-gallery.webp" alt="Concept visual for the Sensory Overload wing: a white cube gallery whose walls are crowded floor to ceiling with overlapping framed artworks and printed notices under harsh bright ceiling light panels" width="1920" height="1280">
+    <div class="herod-in">
+      <p class="kicker">Accessibility / Neurodiversity / Sensory Overload &middot; Wing 3 &middot; Project 01, first build</p>
+      <h1>Navigating a neurodivergent world in a world not built for&nbsp;us.</h1>
+      <p class="lede">Inside this wing sits Sensory Overload: eleven sub rooms, one for each kind of too much, arranged around the white cube where the first build happens. Overload here is never a single loud moment. It accumulates, over time, the way it does in a real day.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: the white cube at peak information load. Same room as the calm hub. Nothing about the architecture changed except how much it asks of you.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -1277,16 +1295,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chronic Conditions</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Wing 4 &middot; Health &middot; Concept stage</p>
-    <h1>The Fluctuating Body: chronic conditions.</h1>
-    <p class="lede">The same gallery, visited twice. Once on a good day, once on a bad one. The art does not change. The world does, and nobody else in the room can see why.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/col-fluctuating.webp" alt="Concept visual for the Chronic Conditions wing: the same white gallery shown twice in one frame, bright and easy with a full glowing battery on one side, dimmer and heavier with the battery low on the other, same art on the walls" width="1920" height="1280" loading="lazy">
-      <figcaption class="figcap">Concept visual: the Chronic Conditions wing. Same room, same art, two different bodies of weather inside the visitor.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/col-fluctuating.webp" alt="Concept visual for the Chronic Conditions wing: the same white gallery shown twice in one frame, bright and easy with a full glowing battery on one side, dimmer and heavier with the battery low on the other, same art on the walls" width="1920" height="1280" loading="lazy">
+    <div class="herod-in">
+      <p class="kicker">Wing 4 &middot; Health &middot; Concept stage</p>
+      <h1>The Fluctuating Body: chronic&nbsp;conditions.</h1>
+      <p class="lede">The same gallery, visited twice. Once on a good day, once on a bad one. The art does not change. The world does, and nobody else in the room can see why.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: the Chronic Conditions wing. Same room, same art, two different bodies of weather inside the visitor.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -1336,16 +1354,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Corporate Cube World</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Wing 5 &middot; Advising &middot; Also inside Neurodiversity / Workload &middot; Concept stage</p>
-    <h1>Corporate Cube World.</h1>
-    <p class="lede">The backrooms meets corporate. An endless cube farm where the fluorescence buzzes and flickers, and sensory inputs accumulate across a workday until overload is not a risk. It is the schedule.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/wing-corporate-cube.webp" alt="Concept visual for Corporate Cube World: an endless liminal office of identical beige cubicles with glowing monitors and paper stacks under rows of fluorescent ceiling panels stretching to a vanishing point" width="1920" height="1280" loading="lazy">
-      <figcaption class="figcap">Concept visual: Corporate Cube World. No windows, no edges, no quiet, and the lights never fully agree to stay on.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/wing-corporate-cube.webp" alt="Concept visual for Corporate Cube World: an endless liminal office of identical beige cubicles with glowing monitors and paper stacks under rows of fluorescent ceiling panels stretching to a vanishing point" width="1920" height="1280" loading="lazy">
+    <div class="herod-in">
+      <p class="kicker">Wing 5 &middot; Advising &middot; Also inside Neurodiversity / Workload &middot; Concept stage</p>
+      <h1>Corporate Cube&nbsp;World.</h1>
+      <p class="lede">The backrooms meets corporate. An endless cube farm where the fluorescence buzzes and flickers, and sensory inputs accumulate across a workday until overload is not a risk. It is the schedule.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: Corporate Cube World. No windows, no edges, no quiet, and the lights never fully agree to stay on.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -1481,14 +1499,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" id="colCrumbs" aria-label="Breadcrumb"></nav>
     <p class="backrow"><button class="textbtn" type="button" id="colBack">&larr; Back to the wing</button></p>
-    <p class="kicker" id="colKicker">Collection</p>
-    <h1 id="colTitle">Collection</h1>
-    <p class="lede" id="colPremise"></p>
   </section>
-  <figure class="sr-hero">
-    <img id="colImg" src="assets/hub-white-cube.webp" alt="Concept visual for Litmus Labs: a pristine white cube gallery hall with large nature photographs on the walls and three arched portals of light opening onto a green forest, deep blue water, and warm desert dunes" width="1920" height="1280">
-    <figcaption class="figcap">Concept visual for this collection: the gallery rooms themselves, illustrated. Where a room carries Matthew&rsquo;s own photography, that work hangs in reserved frames and is never replaced by a concept image.</figcaption>
-  </figure>
+  <div class="herod fullbleed">
+    <img class="herod-img" id="colImg" src="assets/hub-white-cube.webp" alt="Concept visual for Litmus Labs: a pristine white cube gallery hall with large nature photographs on the walls and three arched portals of light opening onto a green forest, deep blue water, and warm desert dunes" width="1920" height="1280">
+    <div class="herod-in">
+      <p class="kicker" id="colKicker">Collection</p>
+      <h1 id="colTitle">Collection</h1>
+      <p class="lede" id="colPremise"></p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual for this collection: the gallery rooms themselves, illustrated. Where a room carries Matthew&rsquo;s own photography, that work hangs in reserved frames and is never replaced by a concept image.</p>
   <section class="block">
     <div class="grid">
       <article class="card"><h3>About this collection</h3><p id="colAbout"></p></article>
@@ -1532,7 +1552,7 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
 <div class="view" data-view="councils">
   <section class="winghead">
     <p class="kicker">The system behind the worlds</p>
-    <h1>Councils &amp; SOPs: paired, on purpose.</h1>
+    <h1>Councils &amp; SOPs: paired, on&nbsp;purpose.</h1>
     <p class="lede">Matthew directed this before any world details: no wing gets designed until the governing bodies exist. Litmus Labs runs on a pair. The SOP Council owns process: how a world is briefed, built, checked, and made safe. The Roundtable Council owns judgment: whether it teaches, whether it is true, and whether it deserves to exist. Neither ships a world alone.</p>
   </section>
   <section class="block">
@@ -1630,16 +1650,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Innovation</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Wing 6 &middot; Innovation &middot; Concept stage</p>
-    <h1>Innovation: the showroom wing.</h1>
-    <p class="lede">Every wing of Litmus Labs is an exhibition, but this is the one built like a product showroom from a film: innovations presented as test chambers, each concept in its own room, demonstrated live instead of described.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/col-chambers.webp" alt="Concept visual for the Innovation wing: a bright showroom spine inside a white cube with glass test chambers along one wall, each holding one working invention under its own pool of task light" width="1920" height="1280" loading="lazy">
-      <figcaption class="figcap">Concept visual: the Innovation wing. Test chambers behind glass, until you step through.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/col-chambers.webp" alt="Concept visual for the Innovation wing: a bright showroom spine inside a white cube with glass test chambers along one wall, each holding one working invention under its own pool of task light" width="1920" height="1280" loading="lazy">
+    <div class="herod-in">
+      <p class="kicker">Wing 6 &middot; Innovation &middot; Concept stage</p>
+      <h1>Innovation: the showroom&nbsp;wing.</h1>
+      <p class="lede">Every wing of Litmus Labs is an exhibition, but this is the one built like a product showroom from a film: innovations presented as test chambers, each concept in its own room, demonstrated live instead of described.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: the Innovation wing. Test chambers behind glass, until you step through.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -1679,16 +1699,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Conservation</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Wing 7 &middot; Conservation &middot; Concept stage</p>
-    <h1>Conservation: change, walked through.</h1>
-    <p class="lede">Disturbance is not the end of an ecosystem&rsquo;s story. It is often the middle. Four rooms, connected wall to wall by portals, walk the connected story of fire, insects, and water.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/col-disturbance.webp" alt="Concept visual for the Conservation wing: four landscape rooms in a ring inside a white gallery, a green post-burn meadow, an orange smoke lit wildfire ridge, a rust red beetle forest, and a rust tinted shoreline, connected by glowing portals in the walls" width="1920" height="1280" loading="lazy">
-      <figcaption class="figcap">Concept visual: the Conservation wing. Four landscapes, one ring, portals in every shared wall. Concept illustration of the gallery rooms; the field photography on their walls is Matthew&rsquo;s own.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/col-disturbance.webp" alt="Concept visual for the Conservation wing: four landscape rooms in a ring inside a white gallery, a green post-burn meadow, an orange smoke lit wildfire ridge, a rust red beetle forest, and a rust tinted shoreline, connected by glowing portals in the walls" width="1920" height="1280" loading="lazy">
+    <div class="herod-in">
+      <p class="kicker">Wing 7 &middot; Conservation &middot; Concept stage</p>
+      <h1>Conservation: change, walked&nbsp;through.</h1>
+      <p class="lede">Disturbance is not the end of an ecosystem&rsquo;s story. It is often the middle. Four rooms, connected wall to wall by portals, walk the connected story of fire, insects, and water.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: the Conservation wing. Four landscapes, one ring, portals in every shared wall. Concept illustration of the gallery rooms; the field photography on their walls is Matthew&rsquo;s own.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -1730,16 +1750,16 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
   <section class="winghead">
     <nav class="crumbs" aria-label="Breadcrumb"><button type="button" data-goto="overview">Hub</button><span class="sep" aria-hidden="true">/</span><button type="button" data-goto="wings">Zones</button><span class="sep" aria-hidden="true">/</span><span aria-current="page">Accessible Voting</span></nav>
     <p class="backrow"><button class="textbtn" type="button" data-goto="wings">&larr; All zones</button></p>
-    <p class="kicker">Wing 8 &middot; Civic &middot; Accessibility &middot; Concept stage</p>
-    <h1>Accessible Voting: the vote, start to finish.</h1>
-    <p class="lede">This wing has two jobs, and it never separates them: voter accessibility and voter empowerment. Every room teaches what the barrier is, and what a voter can do, know, and ask for, in plain language. Not only what institutions should fix. What you can do, on the day, with the vote still yours.</p>
   </section>
-  <section class="block" style="padding-top:20px;">
-    <figure class="fullbleed">
-      <img src="assets/col-voting.webp" alt="Concept visual for the Accessible Voting wing: a white cube gallery in five connected bays holding a bus stop shelter, a marked accessible parking space, a steel ballot drop box, voting booths, and a flight of civic steps" width="1920" height="1280" loading="lazy">
-      <figcaption class="figcap">Concept visual: the Accessible Voting wing. One vote, walked as one journey: getting there, getting in, casting it, and being heard after it.</figcaption>
-    </figure>
-  </section>
+  <div class="herod fullbleed">
+    <img class="herod-img" src="assets/col-voting.webp" alt="Concept visual for the Accessible Voting wing: a white cube gallery in five connected bays holding a bus stop shelter, a marked accessible parking space, a steel ballot drop box, voting booths, and a flight of civic steps" width="1920" height="1280" loading="lazy">
+    <div class="herod-in">
+      <p class="kicker">Wing 8 &middot; Civic &middot; Accessibility &middot; Concept stage</p>
+      <h1>Accessible Voting: the vote, start to&nbsp;finish.</h1>
+      <p class="lede">This wing has two jobs, and it never separates them: voter accessibility and voter empowerment. Every room teaches what the barrier is, and what a voter can do, know, and ask for, in plain language. Not only what institutions should fix. What you can do, on the day, with the vote still yours.</p>
+    </div>
+  </div>
+  <p class="figcap herod-cap">Concept visual: the Accessible Voting wing. One vote, walked as one journey: getting there, getting in, casting it, and being heard after it.</p>
   <section class="block">
     <h2 class="sec">The premise</h2>
     <div class="body-copy">
@@ -3178,7 +3198,7 @@ img{max-width:100%;}
     curCol = id;
     colBackTarget = c.wing;
     document.getElementById("colKicker").textContent = c.kicker + " · Collection";
-    document.getElementById("colTitle").textContent = c.name;
+    document.getElementById("colTitle").textContent = c.name.replace(/ ([^ ]+)$/, " $1");
     document.getElementById("colPremise").innerHTML = c.premise;
     document.getElementById("colAbout").innerHTML = c.about;
     document.getElementById("colTlccw").innerHTML = c.tlccw;
