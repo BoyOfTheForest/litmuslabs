@@ -467,7 +467,7 @@ a.brand:hover .brand-name{color:var(--accent-deep);}
 <style id="heroCss">
 .herod{position:relative;background:#0b1220;overflow:hidden;}
 .herod .herod-img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:50% 66%;border-radius:0;}
-.herod::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,var(--herod-ov,.5));pointer-events:none;}
+.herod::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,var(--herod-ov,.55));pointer-events:none;}
 .herod-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:56px 20px 60px;min-height:min(calc(var(--vw,1vw) * 45),760px);display:flex;flex-direction:column;justify-content:flex-end;box-sizing:border-box;}
 .herod .kicker{color:#ffffff;}
 .herod h1{color:#ffffff;text-wrap:balance;}
@@ -3197,7 +3197,7 @@ img{max-width:100%;}
     if(!c) return;
     curCol = id;
     colBackTarget = c.wing;
-    document.getElementById("colKicker").textContent = c.kicker + " · Collection";
+    document.getElementById("colKicker").textContent = c.kicker;
     document.getElementById("colTitle").textContent = c.name.replace(/ ([^ ]+)$/, " $1");
     document.getElementById("colPremise").innerHTML = c.premise;
     document.getElementById("colAbout").innerHTML = c.about;
